@@ -6,7 +6,7 @@ plugin that has not shipped.
 
 ## 0.1.0, 2026-10-12
 
-Pre-release, verified up to Brickstatic 1.0.0-rc.8. It goes out with Brickstatic 1.0.0.
+Verified up to Brickstatic 1.0.0. It goes out with Brickstatic 1.0.0.
 
 - First pack: `brst-start-here`, `brst-static-export`, `brst-preflight-findings`, `brst-forms-routes`,
   `brst-github-deploy` and `brst-update`.
