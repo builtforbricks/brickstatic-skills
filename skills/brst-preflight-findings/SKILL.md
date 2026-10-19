@@ -101,6 +101,11 @@ the fix names.
   static site is set: its links and robots.txt would point at WordPress. Fix: Set the address of the static site under
   Settings, Address and forms. A note when the site serves no sitemap: "This site serves no sitemap, so the export has
   none." Fix: Switch the sitemap on in WordPress or in your SEO plugin if the static site should have one.
+- **`hardlinks`** (One-page updates). A note shown only on a host where PHP cannot link files: "This host cannot link
+  files, so each one-page update copies the whole last export; on a large site that can be too slow for one request."
+  Fix: Nothing to do for small sites. On a large site, use full exports, or ask the host to allow PHP's link() function.
+  On such a host, an update of a last export over 500 MB or 20,000 files is refused with a sentence asking for a full
+  export.
 - **`search_engines`** (Search engines). A warning when WordPress is set to discourage search engines: "WordPress is set
   to discourage search engines, so every exported page asks them not to index it, and the export has no sitemap." (the
   last part only when no sitemap is served). Fix: If the static site should be found, untick "Discourage search engines
