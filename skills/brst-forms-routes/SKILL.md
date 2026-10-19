@@ -1,27 +1,27 @@
 ---
-name: bse-forms-routes
-description: "Use when a Bricks form must keep working on a site exported with Bricks Static Export Static Export: choosing per form between This WordPress site and Another service, the form's Static Export group in the builder (bseExport* settings), static origins and the WordPress address for forms, Check forms, and what each route needs and cannot do."
+name: brst-forms-routes
+description: "Use when a Bricks form must keep working on a site exported with Brickstatic Brickstatic: choosing per form between This WordPress site and Another service, the form's Brickstatic group in the builder (brstExport* settings), static origins and the WordPress address for forms, Check forms, and what each route needs and cannot do."
 ---
 
-# Static Export: where each form sends
+# Brickstatic: where each form sends
 
-Read `bse-start-here` first. On a static page there is no WordPress to answer a form. Each Bricks form on an exported
+Read `brst-start-here` first. On a static page there is no WordPress to answer a form. Each Bricks form on an exported
 page chooses, in the builder, one of two destinations. There is never an endpoint hosted by Built for Bricks.
 
-## The form's Static Export group
+## The form's Brickstatic group
 
-On Bricks' form element, Content tab, group **Static Export** (after Bricks' own form groups). Bricks keeps the
+On Bricks' form element, Content tab, group **Brickstatic** (after Bricks' own form groups). Bricks keeps the
 values in the element's settings, so they travel with the page and change through Bricks like any form setting.
 
 | Label | Setting | Values |
 |---|---|---|
-| Destination | `bseExportRoute` | `origin`, "This WordPress site" (default) or `endpoint`, "Another service" |
-| Endpoint URL | `bseExportEndpoint` | the service's address, http or https (Another service only) |
-| Encoding | `bseExportEncoding` | `form`, "Form fields" (default) or `json`, "JSON" (Another service only); a form with a file field is always sent as form fields |
-| Field names | `bseExportNames` | `simple`, "Simple keys (full_name)" from each label (default), or `labels`, "Labels as written" (Another service only). A field's own custom name, when set, is sent as is. |
-| Success message | `bseExportSuccess` | empty: the form's own success message (Another service only) |
-| Error message | `bseExportError` | default "Sorry, your message could not be sent. Please try again later." |
-| My service verifies captcha tokens | `bseExportCaptcha` | keeps the captcha widget on the Another service route |
+| Destination | `brstExportRoute` | `origin`, "This WordPress site" (default) or `endpoint`, "Another service" |
+| Endpoint URL | `brstExportEndpoint` | the service's address, http or https (Another service only) |
+| Encoding | `brstExportEncoding` | `form`, "Form fields" (default) or `json`, "JSON" (Another service only); a form with a file field is always sent as form fields |
+| Field names | `brstExportNames` | `simple`, "Simple keys (full_name)" from each label (default), or `labels`, "Labels as written" (Another service only). A field's own custom name, when set, is sent as is. |
+| Success message | `brstExportSuccess` | empty: the form's own success message (Another service only) |
+| Error message | `brstExportError` | default "Sorry, your message could not be sent. Please try again later." |
+| My service verifies captcha tokens | `brstExportCaptcha` | keeps the captcha widget on the Another service route |
 
 With nothing set, a form takes This WordPress site. Another service without a usable http(s) endpoint URL falls back
 to This WordPress site, and the preflight warns (`forms_endpoint_missing`).
@@ -32,10 +32,10 @@ The static page posts to this WordPress install's `admin-ajax.php`, and Bricks r
 the live site: its actions (email, webhook, newsletter, create post, redirect), the honeypot and the captcha check.
 
 - **Needs** WordPress online and publicly reachable at `/wp-admin/admin-ajax.php`, at the **WordPress address for
-  forms** (Settings, Address and forms, `bse_static_export.forms_origin_url`; this site by default; another address when the
+  forms** (Settings, Address and forms, `brst_static_export.forms_origin_url`; this site by default; another address when the
   export is made from a staging copy). No password, access rule, redirect or IP allowlist on that address.
 - **Needs** the static site's origin, so WordPress accepts the post: the **Base URL**'s origin counts on its own;
-  other addresses go in **More addresses the forms accept** (static origins, `bse_static_export.static_origins`), one per line, exact origins such as
+  other addresses go in **More addresses the forms accept** (static origins, `brst_static_export.static_origins`), one per line, exact origins such as
   `https://www.example.com` or one wildcard level such as `https://*.preview.example` for preview deploys. Only the two
   Bricks form actions answer those origins; nothing else on WordPress changes.
 - **Needs** a re-export after the form's fields change.
@@ -73,7 +73,7 @@ it from the static site. Check forms does not post to services.
 2. For each form ask: must Bricks' actions run (the site's email, a webhook, a created post)? Then This WordPress
    site, and WordPress stays online. Is WordPress going away, or must the static site stand alone? Then Another
    service, with its endpoint URL from the owner.
-3. Change the Static Export group through Bricks, on the owner's word. Then set the static origins under Destination
+3. Change the Brickstatic group through Bricks, on the owner's word. Then set the static origins under Destination
    for the WordPress-site forms, save, and run Check forms.
 4. Re-export, then the owner submits each form once from the static site. Only that proves a route.
 
