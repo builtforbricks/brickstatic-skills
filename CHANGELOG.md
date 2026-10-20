@@ -4,9 +4,9 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
-## Unreleased (with the next Brickstatic release)
+## 0.3.0, 2026-10-20
 
-Goes out with the Brickstatic release that adds BFB Advanced Forms; not pushed before it ships.
+Verified up to Brickstatic 1.2.0 (BFB Advanced Forms on the static site). It goes out with Brickstatic 1.2.0.
 
 - `brst-forms-routes`: BFB Advanced Forms (always to this WordPress site, the Error message only, payments and Save for
   later back on the static site, what cannot work), and form elements the preflight lists as not handled.
