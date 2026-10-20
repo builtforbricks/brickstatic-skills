@@ -94,7 +94,7 @@ it from the static site. Check forms does not post to services.
 2. For each form ask: must Bricks' actions run (the site's email, a webhook, a created post)? Then This WordPress
    site, and WordPress stays online. Is WordPress going away, or must the static site stand alone? Then Another
    service, with its endpoint URL from the owner.
-3. Change the Brickstatic group through Bricks, on the owner's word. Then set the static origins under Destination
+3. Change the Brickstatic group through Bricks, on the owner's word. Then set the static origins under Settings, Address and forms
    for the WordPress-site forms, save, and run Check forms.
 4. Re-export, then the owner submits each form once from the static site. Only that proves a route.
 

@@ -137,7 +137,7 @@ the fix names.
   group, or remove the file field, then send one test submission with a file from the static site.
 - **`forms_no_origin`** (No static origin for forms). "<n> forms post to this WordPress site, but no static origin is
   set, so browsers on the static site cannot read the answers and the forms show an error." Fix: Enter the static
-  site's origin under Destination (the base URL or a static origin), or set the forms to send to a service.
+  site's origin under Settings, Address and forms (the base URL or a static origin), or set the forms to send to a service.
 - **`forms_advanced_cart`** (WooCommerce cart in a form). "These forms add a product to the WooCommerce cart. On the
   static site the button cannot: the cart lives in a cookie on this WordPress site, which a static page does not send."
   Fix: Switch off the WooCommerce cart in the Total element, or link to the product page on your shop instead, or
@@ -151,13 +151,15 @@ the fix names.
   WordPress site." Each place names the address (Success, Cancel). Fix: In the form's Pay with Stripe group, enter the
   Success and Cancel addresses in full, on the static site (https://...), or leave them empty to come back to the page.
 - **`forms_unhandled`** (Forms Brickstatic does not handle). "These elements show a form that Brickstatic does not
-  connect, so on the static site sending it fails or does nothing." Any element other than Bricks' Form and a BFB
-  Advanced Form whose name has a word ending in "form" or "forms", and a shortcode element with such a tag. Fix: Use
-  Bricks' Form element or BFB Advanced Forms for forms on the static site, or exclude these pages.
+  connect. Unless the form sends to a service of its own, sending it from the static site fails or does nothing." Any
+  element other than Bricks' Form and a BFB Advanced Form whose name has a word ending in "form" or "forms", and a
+  shortcode element with such a tag; a vendor embed named that way works if it sends to its own service. Fix: Rebuild it
+  with Bricks' Form element or BFB Advanced Forms, which Brickstatic connects, or exclude these pages. A form that sends
+  to its own service needs nothing.
 - **`forms_reachability`** as a warning (Forms origin reachability): "admin-ajax.php at <address> answered <status>
   instead of 400, so forms posting to this WordPress site may fail." Fix: Make /wp-admin/admin-ajax.php publicly
   reachable at the WordPress address for forms (no password, access rule, redirect or IP allowlist on it), or correct
-  that address under Destination.
+  that address under Settings, Address and forms.
 
 ## Notes
 
@@ -201,7 +203,7 @@ the fix names.
   route ("to this WordPress site", "to a service, <host>", "to a service, no address"). BFB Advanced Forms are counted
   here too, always to this WordPress site (the row's `advanced` value is how many; one in quiet mode, a calculator that
   is never sent, is not a form). Fix: Each form's destination is chosen in the builder, in the form's Brickstatic group.
-  Forms to this WordPress site need the static site's origin under Destination; forms to a service need its endpoint
+  Forms to this WordPress site need the static site's origin under Settings, Address and forms; forms to a service need its endpoint
   URL. See `brst-forms-routes`.
 - **`forms_advanced_pay`** (Payments). "After paying, visitors come back to the page on the static site. The line BFB
   shows there while the payment is being confirmed does not appear on a static page." For a BFB Advanced Form with Pay
@@ -217,7 +219,7 @@ the fix names.
   Fix: Add the static host name in the captcha provider's dashboard for the site key set under Bricks > Settings > API
   keys.
 - **`destination`** (Destination). No destination base URL is set, so sitemaps and canonical links keep this site's
-  address. Fix: Enter the static site's address under Destination.
+  address. Fix: Enter the static site's address under Settings, Address and forms.
 
 ## Reading a report
 
