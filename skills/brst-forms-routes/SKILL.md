@@ -1,6 +1,6 @@
 ---
 name: brst-forms-routes
-description: "Use when a Bricks form must keep working on a site exported with Brickstatic Brickstatic: choosing per form between This WordPress site and Another service, the form's Brickstatic group in the builder (brstExport* settings), static origins and the WordPress address for forms, Check forms, and what each route needs and cannot do."
+description: "Use when a Bricks form or a BFB Advanced Form must keep working on a site exported with Brickstatic: choosing per form between This WordPress site and Another service, the form's Brickstatic group in the builder (brstExport* settings), static origins and the WordPress address for forms, Check forms, what each route needs and cannot do, and which other form elements the preflight lists as not handled."
 ---
 
 # Brickstatic: where each form sends
@@ -60,6 +60,27 @@ The static page posts the fields to the Endpoint URL; WordPress is not involved 
   (a token for a field that does not exist is left empty). Tokens that Bricks fills when the page renders, such as
   `{post_title}`, are filled at export time.
 
+## BFB Advanced Forms
+
+A form built with BFB Advanced Forms (BFB Elements Pro, element `bfbe-form`) always sends to this WordPress site, on
+the same request as a Bricks form, so everything under This WordPress site applies (online WordPress, the static
+origin, Check forms, a re-export after changes). Its Brickstatic group has the info line and **Error message**
+(`brstExportError`) only; there is no Destination to set. Its uploads, promo codes and Save for later go to the
+WordPress site's REST addresses (`/wp-json/bfbe/v1/...`), which stay absolute in the exported page.
+
+- After a payment (Pay with Stripe), or a cancel, the visitor comes back to the page on the static site. A Success or
+  Cancel address the designer typed is used as typed: a path such as `/thanks/` means the WordPress site
+  (`forms_advanced_pay_address`); a full address on the static site is right. The "payment is being confirmed" line
+  does not show on a static page (`forms_advanced_pay` suggests a thank-you page on the static site).
+- A Save for later link opens the page on the static site and fills the answers back in.
+- Cannot work on a static page: the WooCommerce cart button of a Total element (`forms_advanced_cart`) and actions that
+  need a logged-in visitor: Update the user, Update post fields, Delete the post, a webhook for logged-in visitors
+  only (`forms_advanced_login`).
+- A form in quiet mode (a calculator that is never sent) is not a form for the export or the preflight.
+
+Any other form element, and a form added with a shortcode, is not connected: the preflight lists it as
+`forms_unhandled`. The fix is to rebuild it with Bricks' Form element or BFB Advanced Forms, or to exclude the page.
+
 ## Check forms
 
 Under Destination, **Check forms** posts from WordPress to itself as each static origin and confirms the cross-origin
@@ -82,10 +103,14 @@ it from the static site. Check forms does not post to services.
 Measured by the plugin's checks: a form in an AJAX popup (to this WordPress site) and in a static popup (to a
 service); forms inside a query loop on both routes (each item's form keeps its own success text); a form inside a
 component (to this WordPress site) and global-element forms on both routes (the preflight lists them too); file fields
-on both routes (to this WordPress site, Bricks saves the file; to a service, the service gets it).
+on both routes (to this WordPress site, Bricks saves the file; to a service, the service gets it). BFB Advanced Forms
+(1.3.2), from a static copy on another host name than WordPress: two steps with a field error, an upload, the send and
+its email; Save for later and the resumed send; a Stripe payment against a stand-in (the return addresses on the static
+site); a form inside a component (counted and rendered).
 
 ## Not measured
 
 Real services and real captcha keys (the plugin's checks post to a local receiver); a service-route form in an AJAX
 popup; popups inside a loop; a file field inside a loop or a component; more than one file per field; a service that
-refuses multipart; a host's upload size limit. Say so when a form is one of these.
+refuses multipart; a host's upload size limit; a BFB Advanced Form in a popup or a query loop, its promo codes and
+quote PDF from the static site, real Stripe, PayPal or Mollie. Say so when a form is one of these.
