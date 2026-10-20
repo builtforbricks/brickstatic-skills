@@ -74,6 +74,9 @@ static site: **This WordPress site** (Bricks runs the form actions; WordPress st
   the owner's word for that push. Never ask for the GitHub token in a chat, read it or store it. See
   `brst-github-deploy`.
 - Pass `force: true` to `export-start` on your own: it cancels the run in progress, which may be the owner's.
+- Switch automatic updates on or off, change their schedule, or run `wp brickstatic auto run`, without the owner's word:
+  with GitHub set up, every automatic update is a push. An update that runs on its own shows as an export in progress
+  with the context `auto`; leave it to finish (the owner stops it from the Export screen). See `brst-static-export`.
 - Edit Bricks' theme files, regenerate CSS files or change Bricks settings to make an export pass, without the
   owner's word.
 - Say a static copy works, or that its forms send, because the export finished: the verify result checks links and

@@ -191,6 +191,28 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
   large sites. `--parallel` is 1 to 6, default 1; only a host with free PHP workers gains from more: above 1 the
   worker probe runs first and the number is capped at the free workers it saw (a line says so).
 - **The abilities**, server-side in steps, only where at least two PHP workers are free (`brst-start-here`).
+- **Automatic updates** (1.1.0), on the server in the background, when the owner switches them on (below).
+
+## Automatic updates (1.1.0)
+
+**Brickstatic > Export > Settings > Automatic updates**, off until the owner switches it on. The whole site is exported
+again on its own: **When content changes** (a page, post or other exported post type, a Bricks template or a menu
+published, updated, unpublished or deleted; Bricks' site-wide settings saved; the builder's Save counts; drafts,
+autosaves and revisions never do) and **On a schedule** (every day or every week at a time on the site's clock).
+Where it goes: GitHub when it is set up (only the changed files are pushed; an unchanged site pushes nothing), else a
+ZIP kept in History.
+
+- An update starts right after the change; changes made while one runs give one more update when it ends.
+- An export started by hand goes first: the automatic update waits for it and starts when it ends.
+- Each background request runs about 20 seconds of server-side steps and hands over to the next. That needs the site
+  able to send a request to itself and one free PHP worker while it runs; the card checks both when it is saved. On a
+  host that cannot, the card shows a server cron job that runs `wp cron event run --due-now` through WP-CLI every five
+  minutes, which runs updates on any host (WP-CLI is not a PHP worker) and keeps schedules on time.
+- A run started this way has the context `auto` and shows on the Export tab with **Stop the automatic update**;
+  `export/<run>/resume` refuses it (`brst_auto_live`): the server drives it.
+- A failure is shown on the card and sends one email to the site's admin address, and none again until an update
+  works; the filter `brickstatic/auto/failure_email` changes or empties the address.
+- They count towards **Keep files of the last N runs** like any export.
 
 ## WP-CLI commands
 
@@ -208,6 +230,10 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
 | `wp brickstatic workers [--max=<n>] [--timeout=<seconds>] [--format]` | how many PHP workers answer the probe right now; from WP-CLI every worker of the pool can answer, inside a web request its own worker is busy |
 | `wp brickstatic abilities list [--format]` | the five abilities and whether they are registered (the AI agents switch) |
 | `wp brickstatic abilities run <name> [--input=<json>] --user=<administrator>` | runs one ability as that user and prints its answer as JSON |
+| `wp brickstatic auto status [--format=table\|json]` | the automatic updates: settings, where an update goes, the run under way, the last result, the next scheduled one, the server check, the last decisions |
+| `wp brickstatic auto set [--on-change=on\|off] [--schedule=off\|daily\|weekly] [--time=HH:MM] [--day=0-6]` | the same as the card; only on the owner's word |
+| `wp brickstatic auto run` | an automatic update now, in this process, waiting for it; only on the owner's word |
 
 The GitHub and release commands are in `brst-github-deploy`. Ask the owner before deleting a
-run or issuing a token: an export token switches export mode on for any request that carries it until it expires.
+run, issuing a token or changing automatic updates: an export token switches export mode on for any request that
+carries it until it expires, and an automatic update with GitHub set up is a push.

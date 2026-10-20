@@ -4,6 +4,16 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.2.0, 2026-10-20
+
+Verified up to Brickstatic 1.1.0. It goes out with Brickstatic 1.1.0, and is the pack's first published release
+(0.1.0 was prepared for 1.0.0 and never published).
+
+- `brst-static-export`: automatic updates (the card, what starts one, where it goes, the background requests and the
+  server cron line, the `auto` context, the failure email) and `wp brickstatic auto status|set|run`.
+- `brst-start-here`: never switch automatic updates on or off, change their schedule or run one without the owner's
+  word; leave a running one to finish.
+
 ## 0.1.0, 2026-10-12
 
 Verified up to Brickstatic 1.0.0. It goes out with Brickstatic 1.0.0.
