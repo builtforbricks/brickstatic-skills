@@ -4,6 +4,11 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.3.1, 2026-10-22
+
+Verified up to Brickstatic 1.2.1 (two admin screen fixes: the GitHub Token field shows again, the export result's
+spacing). No skill changed: nothing the skills describe moved. It goes out with Brickstatic 1.2.1.
+
 ## 0.3.0, 2026-10-20
 
 Verified up to Brickstatic 1.2.0 (BFB Advanced Forms on the static site). It goes out with Brickstatic 1.2.0.
