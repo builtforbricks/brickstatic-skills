@@ -106,6 +106,10 @@ the fix names.
   Fix: Nothing to do for small sites. On a large site, use full exports, or ask the host to allow PHP's link() function.
   On such a host, an update of a last export over 500 MB or 20,000 files is refused with a sentence asking for a full
   export.
+- **`zip_builtin`** (ZIP download). A note shown only on a server without PHP's zip extension: "This server has no PHP
+  zip extension, so Brickstatic builds the ZIP with its own writer. It works the same, a little slower on a large site,
+  and holds at most 65,535 files or 4 GB." Fix: Nothing to do. For a very large site, ask your host to switch the zip
+  extension on, or push the export to GitHub. (Since 1.2.2; before it, such a server built no ZIP at all.)
 - **`search_engines`** (Search engines). A warning when WordPress is set to discourage search engines: "WordPress is set
   to discourage search engines, so every exported page asks them not to index it, and the export has no sitemap." (the
   last part only when no sitemap is served). Fix: If the static site should be found, untick "Discourage search engines

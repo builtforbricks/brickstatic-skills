@@ -127,6 +127,10 @@ files the pages use at their WordPress paths, localised Google Fonts under `asse
 the owner's Extra files. It never holds `wp-config.php`, the theme folder, a PHP file, or any file no page referenced
 and the owner did not list.
 
+A server without PHP's zip extension still gets its ZIP (1.2.2): Brickstatic writes it itself, at most 65,535 files or
+4 GB (preflight note `zip_builtin`). When no ZIP can be built, the screen's log says why after "No ZIP could be built",
+and the files are in the run's folder on the server.
+
 ## Site search
 
 The Search element (plain or overlay) works on the static site: results as you type in a list under the field, Enter
@@ -185,7 +189,10 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
 ## Where an export runs
 
 - **The owner's browser**, from Start export: the default, and it works on any host because PHP never waits on
-  itself. The tab must stay open (Pause and Cancel are on the panel).
+  itself. The tab must stay open (Pause and Cancel are on the panel). A host that blocks an address after many quick
+  requests (1.2.2): five pages in a row refused or unanswered pause the export on its own with a sentence saying so, no
+  page counted as failed; after Resume it fetches one page at a time with a gap. Already blocked: wait, set Parallel
+  requests to 1 under Settings, reload the screen and resume the run.
 - **WP-CLI**, server-side: `wp brickstatic export [--target=zip|github] [--parallel=<n>] [--only=<url>]
   [--changed-only] [--base-url=<url>] [--skip-fonts] [--force] [--format=table|json]`. A CLI process is not a PHP worker, so it suits
   large sites. `--parallel` is 1 to 6, default 1; only a host with free PHP workers gains from more: above 1 the

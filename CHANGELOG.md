@@ -4,6 +4,16 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.3.2, 2026-10-23
+
+Verified up to Brickstatic 1.2.2 (the ZIP without the PHP zip extension, a host that blocks the browser). It goes out
+with Brickstatic 1.2.2.
+
+- `brst-preflight-findings`: the note `zip_builtin` (a server without PHP's zip extension; Brickstatic builds the ZIP
+  itself).
+- `brst-static-export`: the ZIP without the zip extension, the reason when no ZIP is built, and the export pausing on a
+  host that blocks the browser.
+
 ## 0.3.1, 2026-10-22
 
 Verified up to Brickstatic 1.2.1 (two admin screen fixes: the GitHub Token field shows again, the export result's
