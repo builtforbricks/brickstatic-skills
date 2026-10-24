@@ -4,6 +4,15 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.3.5, 2026-10-24
+
+Verified up to Brickstatic 1.2.5 (GitHub pushes with identical files, History relists lost runs, form shortcodes in page
+content). It goes out with Brickstatic 1.2.5.
+
+- `brst-preflight-findings`: `forms_unhandled` also lists form shortcodes and blocks in ordinary page content; what a
+  form plugin's own form does from a static copy (measured).
+- `brst-forms-routes`: shortcodes in page content; a CRM fed through a Bricks Form's Webhook action (measured).
+
 ## 0.3.4, 2026-10-24
 
 Verified up to Brickstatic 1.2.4 (Windows paths, the files count while files are fetched). It goes out with

@@ -78,8 +78,10 @@ WordPress site's REST addresses (`/wp-json/bfbe/v1/...`), which stay absolute in
   only (`forms_advanced_login`).
 - A form in quiet mode (a calculator that is never sent) is not a form for the export or the preflight.
 
-Any other form element, and a form added with a shortcode, is not connected: the preflight lists it as
-`forms_unhandled`. The fix is to rebuild it with Bricks' Form element or BFB Advanced Forms, or to exclude the page.
+Any other form element, and a form added with a shortcode (in a Bricks Shortcode element or, since 1.2.5, in a page's
+ordinary content), is not connected: the preflight lists it as `forms_unhandled`. Measured with a form plugin's own form
+sent from a static copy: the entry reaches WordPress, but the visitor sees no confirmation and may send it again. To
+feed a CRM from the static site, use Bricks' Form element with a Webhook action to the CRM's incoming webhook (measured). The fix is to rebuild it with Bricks' Form element or BFB Advanced Forms, or to exclude the page.
 
 ## Check forms
 

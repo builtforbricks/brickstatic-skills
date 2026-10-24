@@ -154,10 +154,13 @@ the fix names.
   send visitors to an address on this WordPress site instead of the static site. A path such as /thanks/ counts as this
   WordPress site." Each place names the address (Success, Cancel). Fix: In the form's Pay with Stripe group, enter the
   Success and Cancel addresses in full, on the static site (https://...), or leave them empty to come back to the page.
-- **`forms_unhandled`** (Forms Brickstatic does not handle). "These elements show a form that Brickstatic does not
-  connect. Unless the form sends to a service of its own, sending it from the static site fails or does nothing." Any
-  element other than Bricks' Form and a BFB Advanced Form whose name has a word ending in "form" or "forms", and a
-  shortcode element with such a tag; a vendor embed named that way works if it sends to its own service. Fix: Rebuild it
+- **`forms_unhandled`** (Forms Brickstatic does not handle). "These elements and pages show a form that Brickstatic does
+  not connect. Unless the form sends to a service of its own, sending it from the static site fails or does nothing."
+  Any element other than Bricks' Form and a BFB Advanced Form whose name has a word ending in "form" or "forms", a
+  shortcode element with such a tag, and (since 1.2.5) such a shortcode or block in the ordinary content of a page or
+  post that shows its content (no Bricks layout, or one set to render with WordPress); a vendor embed named that way
+  works if it sends to its own service. Measured with a form plugin's own form: the entry reaches WordPress, but the
+  visitor sees no confirmation. Fix: Rebuild it
   with Bricks' Form element or BFB Advanced Forms, which Brickstatic connects, or exclude these pages. A form that sends
   to its own service needs nothing.
 - **`forms_reachability`** as a warning (Forms origin reachability): "admin-ajax.php at <address> answered <status>
