@@ -193,6 +193,9 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
   requests (1.2.2): five pages in a row refused or unanswered pause the export on its own with a sentence saying so, no
   page counted as failed; after Resume it fetches one page at a time with a gap. Already blocked: wait, set Parallel
   requests to 1 under Settings, reload the screen and resume the run.
+- **Windows** (1.2.4): local Windows stacks copy files from disk like any other system. Before 1.2.4 every file was
+  fetched in the browser there ("fetched here" on every line), files in subfolders could be missing from the export
+  and the ZIP was not offered: update, then export again.
 - **WP-CLI**, server-side: `wp brickstatic export [--target=zip|github] [--parallel=<n>] [--only=<url>]
   [--changed-only] [--base-url=<url>] [--skip-fonts] [--force] [--format=table|json]`. A CLI process is not a PHP worker, so it suits
   large sites. `--parallel` is 1 to 6, default 1; only a host with free PHP workers gains from more: above 1 the

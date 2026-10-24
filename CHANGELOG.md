@@ -4,6 +4,13 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.3.4, 2026-10-24
+
+Verified up to Brickstatic 1.2.4 (Windows paths, the files count while files are fetched). It goes out with
+Brickstatic 1.2.4.
+
+- `brst-static-export`: Windows, and what an export made there before 1.2.4 may lack.
+
 ## 0.3.3, 2026-10-24
 
 Verified up to Brickstatic 1.2.3 (no PHP warning on a fresh install). No skill changed: nothing the skills describe

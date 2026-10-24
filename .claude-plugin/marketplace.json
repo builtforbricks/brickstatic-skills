@@ -6,7 +6,7 @@
     },
     "metadata": {
         "description": "Agent skills for Brickstatic, the Bricks Builder plugin by Built for Bricks: the preflight, an export, forms on a static site, GitHub.",
-        "version": "0.3.3"
+        "version": "0.3.4"
     },
     "plugins": [
         {
