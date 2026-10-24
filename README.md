@@ -5,7 +5,7 @@ publishes a Bricks site as static HTML that keeps its forms working, as a ZIP or
 client how an export works, what every preflight finding means and how to fix it, how forms reach a destination from a
 static page, and what a push to GitHub does and never does. Checked against the plugin before every release.
 
-**Status: released with Brickstatic 1.2.2 (pack 0.3.2).** Each release names the Brickstatic version it was checked
+**Status: released with Brickstatic 1.2.3 (pack 0.3.3).** Each release names the Brickstatic version it was checked
 against (`verifiedUpTo` in `skills/brst-update/references/index.json`) and goes out with that plugin version.
 
 ## What a skill is
