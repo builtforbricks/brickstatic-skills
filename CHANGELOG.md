@@ -6,11 +6,15 @@ plugin that has not shipped.
 
 ## 0.3.6, 2026-10-25
 
-Verified up to Brickstatic 1.2.6 (the GitHub token on a PHP without the sodium extension). It goes out with Brickstatic
+Verified up to Brickstatic 1.2.6 (the GitHub token on a PHP without the sodium extension, and the security review's
+fixes). It goes out with Brickstatic
 1.2.6.
 
 - `brst-github-deploy`: a PHP without the sodium extension stores the token with WordPress's own copy of sodium; on
   1.2.5 and older, saving it there ended in a white page.
+- `brst-static-export`: the fixes of Brickstatic's security review in 1.2.6 that change what an export does: export
+  mode drops the browser's post password, comment and shop cookies; a file in a folder closed to visitors goes through
+  the web server.
 
 ## 0.3.5, 2026-10-24
 

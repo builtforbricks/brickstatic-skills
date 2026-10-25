@@ -34,7 +34,8 @@ GitHub and the address of the static site; **3. Export**, the run, its progress 
    Left out: search results, login, `wp-admin`, the REST API, WooCommerce cart, checkout and account with every
    address under them, author archives of authors without a user, drafts, and the owner's **Leave out** patterns.
    `wp brickstatic discover` prints the job list.
-3. **Pages** are fetched in export mode: anonymously (no admin bar, no edit links), each fetch carrying
+3. **Pages** are fetched in export mode: anonymously (no admin bar, no edit links; since 1.2.6 the browser's post
+   password, comment and shop cookies are dropped too, so a protected post stays locked in loops), each fetch carrying
    `?brst-nocache=<run id>` so page caches let it through and never keep it (WordPress never sees the argument).
    Each page proves export mode by its answer headers or, when a host strips those, by a proof inside the page made
    with the run's token. A stored copy from an earlier export is refused. When three pages in a row come back without
@@ -48,7 +49,9 @@ GitHub and the address of the static site; **3. Export**, the run, its progress 
    root-relative links; sitemaps, `robots.txt`, `canonical`, `hreflang` links and `og:url` use the destination base
    URL.
 5. **Assets**: the files the pages use (images, `srcset`, CSS `url()` and `@import`, icon fonts, Bricks' CSS files),
-   copied from disk or fetched, and the owner's **Extra files** (copied from disk only). Then, before the check:
+   copied from disk or fetched (since 1.2.6 a file in a folder closed to visitors by an `.htaccess` deny or a
+   `web.config` is fetched through the web server, which answers it as it answers a visitor), and the owner's **Extra
+   files** (copied from disk only). Then, before the check:
    redirects (`_redirects` and redirect pages), sitemaps taken down to the pages the export has, and the search index,
    in steps of a few seconds where it can be long.
 6. **Google Fonts** are copied into the export by default, linked ones and ones a stylesheet imports, so the static
