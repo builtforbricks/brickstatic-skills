@@ -30,8 +30,9 @@ card's target picker offers GitHub only when the card is complete; until then it
 **The token**: a fine-grained personal access token for this one repository with Contents: read and write, and
 nothing else. On a repository that belongs to an organisation, the owner approves the token first. It is stored
 encrypted with the site's secret keys and never shown again; it never reaches the browser. Changing the site's secret
-keys means pasting the token again. Without the sodium extension or the secret keys the card shows why and the token
-field is disabled.
+keys means pasting the token again. A PHP without the sodium extension seals it with WordPress's own copy of sodium (since
+1.2.6; on 1.2.5 and older, saving the token there ended in a white page: update the plugin). Without the secret keys the
+card shows why and the token field is disabled.
 
 ## What a push does
 

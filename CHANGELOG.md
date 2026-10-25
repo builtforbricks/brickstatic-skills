@@ -4,6 +4,14 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.3.6, 2026-10-25
+
+Verified up to Brickstatic 1.2.6 (the GitHub token on a PHP without the sodium extension). It goes out with Brickstatic
+1.2.6.
+
+- `brst-github-deploy`: a PHP without the sodium extension stores the token with WordPress's own copy of sodium; on
+  1.2.5 and older, saving it there ended in a white page.
+
 ## 0.3.5, 2026-10-24
 
 Verified up to Brickstatic 1.2.5 (GitHub pushes with identical files, History relists lost runs, form shortcodes in page
