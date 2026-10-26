@@ -4,6 +4,16 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.4.0, 2026-10-26
+
+Verified up to Brickstatic 1.3.0 (the Your server target: SFTP, FTPS and FTP). It goes out with Brickstatic 1.3.0.
+
+- `brst-server-deploy` (new): the Your server card, Test connection and accepting the SFTP server's key, a folder that
+  already holds files, what an upload sends and removes, the manifest, failures and retries, automatic updates to the
+  server, the WP-CLI server commands, and what the skill never does with the password or the key.
+- `brst-start-here`: `export-start` takes `target: server`; uploading to the owner's server is in the never-do list.
+- `brst-static-export`: the third target, `--target=server`, and Where updates go for automatic updates.
+
 ## 0.3.6, 2026-10-25
 
 Verified up to Brickstatic 1.2.6 (the GitHub token on a PHP without the sodium extension, and the security review's

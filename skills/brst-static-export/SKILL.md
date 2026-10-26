@@ -1,6 +1,6 @@
 ---
 name: brst-static-export
-description: "Use when exporting a Bricks site as static HTML with Brickstatic, or explaining what an export does: export mode, which URLs are exported or left out, the export options and the destination, the ZIP and GitHub targets, runs and retention, what the ZIP holds, site search, redirects, sitemaps, extra pages and files, updating a page from Bricks, and the WP-CLI commands."
+description: "Use when exporting a Bricks site as static HTML with Brickstatic, or explaining what an export does: export mode, which URLs are exported or left out, the export options and the destination, the ZIP, GitHub and Your server targets, runs and retention, what the ZIP holds, site search, redirects, sitemaps, extra pages and files, updating a page from Bricks, and the WP-CLI commands."
 ---
 
 # Brickstatic: how an export works
@@ -59,7 +59,7 @@ GitHub and the address of the static site; **3. Export**, the run, its progress 
 7. **Verify** (in steps of about four seconds) checks the tree: every internal link exists, every referenced file resolves, no reference to the
    WordPress site is left, every page carried the export header. Failures are listed, never rounded away.
 8. **The archive**, `site.zip`, is built in a fixed order with its sha256 recorded. For the GitHub target the push
-   follows (`brst-github-deploy`).
+   follows (`brst-github-deploy`), for Your server the upload (`brst-server-deploy`).
 
 ## What export mode changes in a page
 
@@ -113,6 +113,9 @@ A page's own **Page settings → Brickstatic** in Bricks: **Leave this page out 
   plain `http://` site the browser warns about every download; the screen says so there and the owner chooses Keep.
 - **GitHub**: available once a repository and a token are saved under Settings, GitHub; until then step 2 shows it
   disabled with its reason and a Set up GitHub link. See `brst-github-deploy`.
+- **Your server (SFTP or FTP)** (1.3.0): available once the Your server card is complete (for SFTP, the server's key
+  accepted); until then step 2 shows it disabled with its reason and a Set up your server link. Only new and changed
+  files go up. See `brst-server-deploy`.
 
 ## Runs and retention
 
@@ -199,7 +202,7 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
 - **Windows** (1.2.4): local Windows stacks copy files from disk like any other system. Before 1.2.4 every file was
   fetched in the browser there ("fetched here" on every line), files in subfolders could be missing from the export
   and the ZIP was not offered: update, then export again.
-- **WP-CLI**, server-side: `wp brickstatic export [--target=zip|github] [--parallel=<n>] [--only=<url>]
+- **WP-CLI**, server-side: `wp brickstatic export [--target=zip|github|server] [--parallel=<n>] [--only=<url>]
   [--changed-only] [--base-url=<url>] [--skip-fonts] [--force] [--format=table|json]`. A CLI process is not a PHP worker, so it suits
   large sites. `--parallel` is 1 to 6, default 1; only a host with free PHP workers gains from more: above 1 the
   worker probe runs first and the number is capped at the free workers it saw (a line says so).
@@ -212,8 +215,9 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
 again on its own: **When content changes** (a page, post or other exported post type, a Bricks template or a menu
 published, updated, unpublished or deleted; Bricks' site-wide settings saved; the builder's Save counts; drafts,
 autosaves and revisions never do) and **On a schedule** (every day or every week at a time on the site's clock).
-Where it goes: GitHub when it is set up (only the changed files are pushed; an unchanged site pushes nothing), else a
-ZIP kept in History.
+Where it goes (1.3.0, **Where updates go**): GitHub, Your server or a ZIP kept in History; GitHub and the server receive
+only the changed files (an unchanged site sends nothing). Without a choice, GitHub when it is set up, else a ZIP; a choice
+that is not set up falls back to a ZIP.
 
 - An update starts right after the change; changes made while one runs give one more update when it ends.
 - An export started by hand goes first: the automatic update waits for it and starts when it ends.
@@ -247,6 +251,6 @@ ZIP kept in History.
 | `wp brickstatic auto set [--on-change=on\|off] [--schedule=off\|daily\|weekly] [--time=HH:MM] [--day=0-6]` | the same as the card; only on the owner's word |
 | `wp brickstatic auto run` | an automatic update now, in this process, waiting for it; only on the owner's word |
 
-The GitHub and release commands are in `brst-github-deploy`. Ask the owner before deleting a
+The GitHub and release commands are in `brst-github-deploy`, the server commands in `brst-server-deploy`. Ask the owner before deleting a
 run, issuing a token or changing automatic updates: an export token switches export mode on for any request that
-carries it until it expires, and an automatic update with GitHub set up is a push.
+carries it until it expires, and an automatic update to GitHub or your server is a push or an upload.

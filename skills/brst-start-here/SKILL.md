@@ -33,7 +33,7 @@ and the export token.
 | Ability | Input | What it does |
 |---|---|---|
 | `brickstatic/preflight` | none | Read-only for the site (it stores the report, as the screen does). Answers `ok`, `counts` (`blocker`, `warn`, `note`), the `rows` (`id`, `level` as `blocker`, `warn` or `note`, `feature`, `where` as text with titles and addresses, `consequence`, `fix`), `bricks`, `plugin_version` and `static_export_enabled`. Read each row with `brst-preflight-findings`. |
-| `brickstatic/export-start` | `target` (`zip` by default, or `github`), `only` (page URLs or paths, for a page re-export), `force` | Starts a run like the screen's Start export, fetches nothing yet, and answers `run_id`, `jobs`, `parallel` (the free workers less one, so the site keeps one for visitors), `partial`, `target`, the `preflight` counts and `workers` (`free`, `probed`). Refuses as the screen does: a blocker in the preflight (`brst_preflight_blocked`), a run still in progress (`brst_run_live`), a site that does not meet the requirements (`brst_requirements`), a target that is not set up (`brst_target_unavailable`). The export token stays on the server. |
+| `brickstatic/export-start` | `target` (`zip` by default, `github`, or `server` since 1.3.0), `only` (page URLs or paths, for a page re-export), `force` | Starts a run like the screen's Start export, fetches nothing yet, and answers `run_id`, `jobs`, `parallel` (the free workers less one, so the site keeps one for visitors), `partial`, `target`, the `preflight` counts and `workers` (`free`, `probed`). Refuses as the screen does: a blocker in the preflight (`brst_preflight_blocked`), a run still in progress (`brst_run_live`), a site that does not meet the requirements (`brst_requirements`), a target that is not set up (`brst_target_unavailable`). The export token stays on the server. |
 | `brickstatic/export-step` | `run_id`, `pages` (1 to 20, default 10) | One bounded step: up to `pages` pages fetched by the server, else one step of assets, fonts, finish or deploy. Answers `done`, `status`, `phase` (`pages`, `assets`, `fonts`, `finish`, `deploy`), `counters`, `fetched`, `warnings_tail`, `download_url`, `release` and `wait`. Call it until `done`; when `wait` is above 0 (GitHub asked for a pause), wait that many seconds first. |
 | `brickstatic/export-status` | `run_id` | Read-only. The run's status, counters, last warnings and log lines, the verify result, the archive and the release, with `download_url` (the ZIP's address for a signed-in administrator). |
 | `brickstatic/runs-list` | none | Read-only. The remembered runs, newest first, and the run in progress (`current`). |
@@ -73,9 +73,12 @@ static site: **This WordPress site** (Bricks runs the form actions; WordPress st
 - Push to GitHub (`export-start` with `target: github`), roll back a release, or change the GitHub settings without
   the owner's word for that push. Never ask for the GitHub token in a chat, read it or store it. See
   `brst-github-deploy`.
+- Upload to the owner's server (`export-start` with `target: server`), change the Your server settings, accept a
+  server's key or confirm a folder without the owner's word for that one action. Never ask for the server password, the
+  private key or its passphrase in a chat, read them or store them. See `brst-server-deploy`.
 - Pass `force: true` to `export-start` on your own: it cancels the run in progress, which may be the owner's.
 - Switch automatic updates on or off, change their schedule, or run `wp brickstatic auto run`, without the owner's word:
-  with GitHub set up, every automatic update is a push. An update that runs on its own shows as an export in progress
+  with GitHub or your server chosen, every automatic update is a push or an upload. An update that runs on its own shows as an export in progress
   with the context `auto`; leave it to finish (the owner stops it from the Export screen). See `brst-static-export`.
 - Edit Bricks' theme files, regenerate CSS files or change Bricks settings to make an export pass, without the
   owner's word.
