@@ -54,20 +54,27 @@ the folder confirmation.
 After the archive is built:
 
 - It compares the export with `.brickstatic-manifest.json` in the folder, the list of what Brickstatic uploaded (with a
-  copy on the site, option `brst_server_manifest`). The server's files are never hashed.
+  copy on the site, option `brst_server_manifest`). The server's files are never hashed. Without the list on the server
+  (the folder emptied or restored from a backup), every file goes up again.
 - New and changed files go up: files first, then pages, the home page last. An unchanged site sends nothing ("Nothing
   changed since the last upload to ...").
 - Files on the list that the export no longer has are removed, and the folders that leaves empty. **Nothing else in the
   folder is ever touched**: the owner's own files stay, and an edited list cannot point outside the folder, at a dot
-  file or at PHP.
+  file or at PHP. An export in which pages failed removes nothing (a page that failed is not gone from the site), and a
+  file the server refuses to delete stays listed with a warning; the next export tries again.
+- Files above 4 MB go up in 4 MB pieces, so a slow link never outlasts the host's time limit; a dropped connection
+  carries on where the piece stopped.
 - A page update (**Update one page only**, or `--only`) uploads what changed for it and removes nothing.
 - The result row: "Uploaded to sftp://user@host/folder: N files new or changed, M removed." with **View the site** when
   the card has a site address. The ZIP stays in History.
 
 **A folder that already holds files** and no list: the test says how many, and the first upload stops with "The folder
 ... already holds N files and folders that Brickstatic did not upload..." until the owner clicks **Use this folder for
-the static site** (or `--confirm-folder`). Same-named files are then replaced; the rest stays. The folder should be the
-static site's own.
+the static site** (or `--confirm-folder`). Same-named files are then replaced; the rest stays. A file that was there
+before and got replaced is listed under `keep` and never removed. The folder should be the static site's own.
+
+**A copy of the site** (a staging clone of the database) does not upload: the settings remember the site address they
+were saved on, and the target says so until they are saved again on the copy.
 
 ## Failures
 
