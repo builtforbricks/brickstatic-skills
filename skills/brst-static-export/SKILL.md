@@ -179,7 +179,8 @@ Re-exports one page and the files it uses, into a copy of the last complete expo
 - **On the screen**: **Update one page only** under step 3 (**Re-export this page**); `export-start` with `only`
   (and `changed_only`); `wp brickstatic export --only=<url> [--changed-only]`.
 
-Where it goes, GitHub first: **GitHub: commit the changed files** (picked once GitHub is set up), **ZIP: changed files
+Where it goes, GitHub first: **GitHub: commit the changed files** (picked once GitHub is set up), **Your server: upload
+the changed files** (1.3.0; picked when the server is set up and GitHub is not; removes nothing), **ZIP: changed files
 only** (just what the update changed, to unzip over the live copy; when nothing changed there is no ZIP and the screen
 says so), **ZIP: whole site** (the last export with the page replaced). The search index and `_redirects` are rebuilt
 from the whole tree, and the sitemaps are fetched from WordPress again and taken down to the pages of the whole tree,

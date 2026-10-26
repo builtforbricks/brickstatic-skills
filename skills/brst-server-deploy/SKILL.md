@@ -64,7 +64,8 @@ After the archive is built:
   file the server refuses to delete stays listed with a warning; the next export tries again.
 - Files above 4 MB go up in 4 MB pieces, so a slow link never outlasts the host's time limit; a dropped connection
   carries on where the piece stopped.
-- A page update (**Update one page only**, or `--only`) uploads what changed for it and removes nothing.
+- A page update (**Update one page only** or the builder's window, choice **Your server: upload the changed files**, picked
+  when GitHub is not set up; or `--only`) uploads what changed for it and removes nothing.
 - The result row: "Uploaded to sftp://user@host/folder: N files new or changed, M removed." with **View the site** when
   the card has a site address. The ZIP stays in History.
 
@@ -90,7 +91,8 @@ were saved on, and the target says so until they are saved again on the copy.
 ## Automatic updates
 
 **Settings > Automatic updates > Where updates go**: GitHub, Your server or A ZIP in History (`target`). An update to the
-server sends only the changed files. A choice that is not set up falls back to a ZIP, and the card says so.
+server sends only the changed files. Until the owner changes the select, `target` stays empty and the default rule applies
+(GitHub once set up, else a ZIP). A choice that is not set up falls back to a ZIP, and the card says so.
 
 ## WP-CLI
 
