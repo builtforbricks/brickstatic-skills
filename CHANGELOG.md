@@ -4,6 +4,14 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.5.0, 2026-10-30
+
+Verified up to Brickstatic 1.4.0. It goes out with Brickstatic 1.4.0.
+
+- `brst-static-export`, `brst-start-here`: Other search forms, a CSS selector that gives site search to search forms
+  that are not an element (a widget's, a shortcode's, the theme's).
+- `brst-preflight-findings`: the `search_other` row.
+
 ## 0.4.1, 2026-10-30
 
 Verified up to Brickstatic 1.3.1. It goes out with Brickstatic 1.3.1.

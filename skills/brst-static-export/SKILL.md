@@ -23,7 +23,8 @@ GitHub and the address of the static site; **3. Export**, the run, its progress 
      an SEO plugin's index (Yoast SEO, Rank Math, SEOPress, All in One SEO, The SEO Framework) or WordPress' own
      `wp-sitemap.xml`, each with its children and stylesheet;
    - with site search on and a search element on the site (Bricks' Search, or one another plugin names with the
-     `brickstatic/search/elements` filter, since 1.3.1), the search results page (`/search/`, or `/site-search/`
+     `brickstatic/search/elements` filter, since 1.3.1) or a selector under Other search forms (since 1.4.0), the
+     search results page (`/search/`, or `/site-search/`
      when the site exports a page, an archive or an Extra page of its own at `/search/`);
    - the owner's **Extra pages** (addresses nothing links to), marked `manual`; one WordPress answers with a 404 or a
      redirect is skipped with a run warning, and a file typed there is not a page (it belongs under Extra files);
@@ -146,9 +147,14 @@ text (not archives, headers or footers), about 3 MB of page text up to about 7,5
 a `post_type` parameter on the element narrows the results, and on a site in several languages results follow the
 page's language. It works from a folder opened on disk too. Since 1.3.1 another plugin's search element works the same
 way once that plugin names it with the filter `brickstatic/search/elements` (its form needs an input named `s` sent to
-the site's home); whether a given element pack does is for its author to say, never assume it. A search form that is
-not an element (a WordPress widget, a shortcode) gets the script only on a site that also has a search element, and
-only on pages where one renders. Colours: the CSS variables `--brst-search-bg`, `-fg`, `-muted`, `-border`, `-hover`, `-mark`.
+the site's home); whether a given element pack does is for its author to say, never assume it. Since 1.4.0 a search
+form that is not an element (a WordPress widget, a shortcode, the theme's) works once the owner gives a CSS selector
+for it, or for its field, under **Settings → What goes in → Other search forms**: those forms get results as you type
+and the results page whatever their field is called or where they sent, the index is built even with no search element,
+and the search script then goes on every page. The screen refuses a selector the browser cannot read; the preflight's
+`search_other` row repeats it. A form's own live search still asks WordPress and fails: its plugin has to switch it off.
+Without a selector, only such a form with an input named `s` sent to the site's home works, and only on pages where a
+search element renders. Colours: the CSS variables `--brst-search-bg`, `-fg`, `-muted`, `-border`, `-hover`, `-mark`.
 
 ## Redirects
 

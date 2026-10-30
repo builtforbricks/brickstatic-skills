@@ -82,6 +82,11 @@ the fix names.
   pages, not WordPress." Fix: nothing; a page can stay out of the search from its Page settings in Bricks. With it off,
   a warning: "Site search is switched off, so the search form is left out of the static site." Fix: Switch on Site
   search under Settings, What goes in, or remove the search form.
+- **`search_other`** (Other search forms, since 1.4.0). A note, site-wide, while Site search is on and a selector is set
+  under **Other search forms**: "The forms matching <selector> get site search on the static site: results as you type
+  and the results page. The search script goes on every page, since only a browser can tell which pages hold such a
+  form." Fix: after the export, type two letters into such a form on the static copy; if no results show, the selector
+  matches no form on that page. Never claim it found the forms: the server cannot see them.
 - **`redirects`** (Redirects). A note when every redirect carries over: "<n> redirects go into the export (<sources>): a
   _redirects file for hosts that read one, and a redirect page at each old address for any other host." A
   warning when some cannot: "<n> redirects go into the export (<sources>); <m> need WordPress to answer and are left
