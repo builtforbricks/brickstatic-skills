@@ -99,7 +99,7 @@ server sends only the changed files. Until the owner changes the select, `target
 | Command | Does |
 |---|---|
 | `wp brickstatic server set [--protocol=<protocol>] [--host=<host>] [--port=<port>] [--login=<login>] [--folder=<folder>] [--auth=<auth>] [--site-url=<url>]` | saves the card's settings; options left out keep their value. `--login` and `--folder`, because WP-CLI takes `--user` and `--path` itself |
-| `wp brickstatic server set-secret <which> [--remove]` | `password`, `key` or `passphrase`, read from STDIN (a key to the end of STDIN); never an argument |
+| `wp brickstatic server set-secret <which> [--remove]` | `password`, `key` or `passphrase`, read from STDIN (a key to the end of STDIN); never an argument. Run `server set` with the host first: on a card with no host it says so and stores nothing (1.3.1) |
 | `wp brickstatic server test [--accept-key=<fingerprint>] [--confirm-folder] [--format=table\|json]` | the test; `--accept-key` takes only the fingerprint the last test printed |
 | `wp brickstatic server show` | the settings, never a secret |
 | `wp brickstatic export --target=server` | the export, then the upload |

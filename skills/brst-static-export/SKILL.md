@@ -22,7 +22,8 @@ GitHub and the address of the static site; **3. Export**, the run, its progress 
    - the front page, the posts page, a 404 page, `robots.txt`, `favicon.ico`, and the sitemaps `robots.txt` announces:
      an SEO plugin's index (Yoast SEO, Rank Math, SEOPress, All in One SEO, The SEO Framework) or WordPress' own
      `wp-sitemap.xml`, each with its children and stylesheet;
-   - with site search on and a Search element on the site, the search results page (`/search/`, or `/site-search/`
+   - with site search on and a search element on the site (Bricks' Search, or one another plugin names with the
+     `brickstatic/search/elements` filter, since 1.3.1), the search results page (`/search/`, or `/site-search/`
      when the site exports a page, an archive or an Extra page of its own at `/search/`);
    - the owner's **Extra pages** (addresses nothing links to), marked `manual`; one WordPress answers with a 404 or a
      redirect is skipped with a run warning, and a file typed there is not a page (it belongs under Extra files);
@@ -73,7 +74,7 @@ Only while a page renders for the export; Bricks' theme files and settings are n
 | Load more, infinite scroll | up to 100 items pre-rendered and revealed in batches by a small script; past that a "See all" link to separately exported pages |
 | AJAX popups | rendered into the page, so they open without a request |
 | Query filters, live search | not rendered; the loop exports unfiltered with plain pagination |
-| Search element | kept, with the static search script (site search on); left out when site search is off |
+| Search element (Bricks', or one named with `brickstatic/search/elements`) | kept, with the static search script (site search on); left out when site search is off |
 | Comments | the whole comments area removed; existing comments are not exported |
 | Relative dates | rendered once at export time, then they stand still |
 | WordPress runtime | `ajaxUrl`, REST URL and nonces blanked (kept only where a form sends to this WordPress site); REST discovery, oEmbed, feed links, emoji script and generator removed |
@@ -143,9 +144,11 @@ The Search element (plain or overlay) works on the static site: results as you t
 opens the results page with every match, twenty at a time. The index is built from the exported singular pages' main
 text (not archives, headers or footers), about 3 MB of page text up to about 7,500 pages; accents and case are ignored,
 a `post_type` parameter on the element narrows the results, and on a site in several languages results follow the
-page's language. It works from a folder opened on disk too. A search form that is not a Bricks Search element (a
-WordPress widget, a shortcode) gets the script only on a site that also has a Search element, and only on pages where
-one renders. Colours: the CSS variables `--brst-search-bg`, `-fg`, `-muted`, `-border`, `-hover`, `-mark`.
+page's language. It works from a folder opened on disk too. Since 1.3.1 another plugin's search element works the same
+way once that plugin names it with the filter `brickstatic/search/elements` (its form needs an input named `s` sent to
+the site's home); whether a given element pack does is for its author to say, never assume it. A search form that is
+not an element (a WordPress widget, a shortcode) gets the script only on a site that also has a search element, and
+only on pages where one renders. Colours: the CSS variables `--brst-search-bg`, `-fg`, `-muted`, `-border`, `-hover`, `-mark`.
 
 ## Redirects
 

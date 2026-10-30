@@ -4,6 +4,14 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.4.1, 2026-10-30
+
+Verified up to Brickstatic 1.3.1. It goes out with Brickstatic 1.3.1.
+
+- `brst-static-export`, `brst-start-here`: site search works with another plugin's search element once that plugin
+  names it with `brickstatic/search/elements`.
+- `brst-server-deploy`: `server set-secret` needs the host saved first, and says so.
+
 ## 0.4.0, 2026-10-26
 
 Verified up to Brickstatic 1.3.0 (the Your server target: SFTP, FTPS and FTP). It goes out with Brickstatic 1.3.0.
