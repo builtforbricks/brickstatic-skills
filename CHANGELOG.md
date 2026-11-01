@@ -4,6 +4,15 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.6.0, 2026-11-01
+
+Verified up to Brickstatic 1.5.0. It goes out with Brickstatic 1.5.0.
+
+- `brst-static-export`, `brst-start-here`: Query filters on the static copy: checkbox, radio, select and search filters
+  on a page's post loop, with counts, pagination and the address, up to 1,000 items; the kinds left out, with the
+  measured sizes.
+- `brst-preflight-findings`: the rows `filters_static` and `filters_over_cap`; `filters` now names the reasons.
+
 ## 0.5.0, 2026-10-30
 
 Verified up to Brickstatic 1.4.0. It goes out with Brickstatic 1.4.0.

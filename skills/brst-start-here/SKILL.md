@@ -87,9 +87,12 @@ static site: **This WordPress site** (Bricks runs the form actions; WordPress st
 
 ## Honest limits to keep in mind
 
-Not static, whatever the export does (the preflight lists each): query filters, live search, the comments form,
-logins, carts and checkout, and anything that calls `admin-ajax` or the REST API from the page. Load more and infinite
-scroll pre-render up to 100 items per loop. Forms to this WordPress site need WordPress online.
+Not static, whatever the export does (the preflight lists each): live search, the comments form, logins, carts and
+checkout, query filters of the kinds the static site cannot drive (range, date, sort, per page, custom fields,
+templates, product and reveal loops, loops over 1,000 items), and anything that calls `admin-ajax` or the REST API from
+the page. Load more and infinite scroll pre-render up to 100 items per loop. Forms to this WordPress site need WordPress
+online. Since 1.5.0 checkbox, radio, select and search filters on a page's post loop work on the static copy from the
+items on the page (`brst-static-export`, Query filters); name the kinds, never "every filter".
 Site search works for the Bricks Search element and, since 1.3.1, for another plugin's search element that plugin names
 with `brickstatic/search/elements`. Since 1.4.0 a search form that is not an element (a WordPress widget, a shortcode,
 the theme's) works once the owner names it with a CSS selector under **Other search forms**; without one, only a form

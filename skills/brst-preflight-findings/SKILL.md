@@ -72,9 +72,23 @@ the fix names.
   The three CSS rows appear only when Bricks loads its CSS as files, and carry the action **Regenerate CSS files** on
   step 1, Check the site (`wp brickstatic regenerate-css`). It writes Bricks' CSS files with Bricks' own generator
   and runs the preflight again; it refuses when the CSS loading method is inline.
-- **`filters`** (Query filters). Query filters need WordPress to answer; the export leaves them out and exports the
-  loop unfiltered with plain pagination. Fix: Remove the filter elements from exported pages, or keep them and accept
-  that the static copy shows the unfiltered loop.
+- **`filters_static`** (Query filters, since 1.5.0). A note: "Filters work on the static site: <n> filtered loops,
+  <m> items. Each page carries every item of its loop; the filters, the counts and the pagination run in the browser,
+  and nothing asks WordPress." Fix: nothing; after the export, try a filter on the static copy. In scope: checkbox,
+  radio and select filters on a taxonomy, the post type or the author, the search filter, submit, reset, active
+  filters, the loop's pagination; the loop a post loop on a page or post of its own, up to 1,000 items.
+- **`filters`** (Query filters the static site cannot drive). A warning for the filter elements out of scope; the
+  consequence names the reasons: "These filters need WordPress to answer (<reasons>); the export leaves them out.
+  Their loop keeps the filters the static site can drive, or is exported unfiltered with plain pagination when it has
+  none." Reasons: Query filters switched off under Settings; a range or date filter; a sort or results-per-page
+  filter; a filter on a custom field; a filter on a WordPress field other than the post type or the author; a loop that
+  is not a post loop, a product loop, a load-more, infinite-scroll or live-search loop; a filter in a template; a loop
+  with more items than one page can carry. Fix: use checkbox, radio, select or search filters on a taxonomy, the post
+  type or the author, on a page or post of its own; or remove the filter elements; or keep them and accept the
+  unfiltered loop.
+- **`filters_over_cap`** (Query filters on a large loop, since 1.5.0). A warning: "A filtered loop with more than
+  1000 items is exported unfiltered with plain pagination: one page cannot carry that many items." Fix: narrow the loop
+  (a post type, a taxonomy, a date range), or split it over several pages with a loop each.
 - **`live_search`** (Live search). Live search asks WordPress for results as you type; the export leaves it out. Fix:
   Remove the live search, or replace it with a search service that works from static pages.
 - **`search_forms`** (Search forms). With **Site search** on, a note: "Search works on the static site: the export

@@ -74,7 +74,8 @@ Only while a page renders for the export; Bricks' theme files and settings are n
 | AJAX pagination | plain links to pre-rendered pages |
 | Load more, infinite scroll | up to 100 items pre-rendered and revealed in batches by a small script; past that a "See all" link to separately exported pages |
 | AJAX popups | rendered into the page, so they open without a request |
-| Query filters, live search | not rendered; the loop exports unfiltered with plain pagination |
+| Query filters | since 1.5.0, checkbox, radio, select and search filters on a page's post loop stay and run in the browser (see Query filters below); the others are not rendered and the loop exports as the kept filters allow, or unfiltered with plain pagination |
+| Live search | not rendered; the loop exports unfiltered with plain pagination |
 | Search element (Bricks', or one named with `brickstatic/search/elements`) | kept, with the static search script (site search on); left out when site search is off |
 | Comments | the whole comments area removed; existing comments are not exported |
 | Relative dates | rendered once at export time, then they stand still |
@@ -155,6 +156,23 @@ and the search script then goes on every page. The screen refuses a selector the
 `search_other` row repeats it. A form's own live search still asks WordPress and fails: its plugin has to switch it off.
 Without a selector, only such a form with an input named `s` sent to the site's home works, and only on pages where a
 search element renders. Colours: the CSS variables `--brst-search-bg`, `-fg`, `-muted`, `-border`, `-hover`, `-mark`.
+
+## Query filters
+
+Since 1.5.0, with **Settings → What goes in → Query filters** on (the default), a page's filtered query loop works on
+the static site without WordPress: the page carries every item of the loop (the ones past the page size hidden), and
+Brickstatic's script filters, counts and pages them in the browser. In scope: checkbox, radio and select filters on a
+taxonomy (hierarchical included: a parent term matches its children's posts), on the post type or the author; the
+search filter (as you type or on submit); submit, reset, active filters; the counts, which follow the other filters;
+the loop's pagination (`?brst-page-<loop id>=N`, no `/page/N/` exported for that loop); the loop's own no-results text.
+The address keeps the filters under Bricks' names (the nice name, else `brx_<id>`), so a filtered link can be shared
+and Back works. The loop must be a post loop on a page or post of its own and hold at most 1,000 items (the filter
+`brickstatic/filters/cap` changes it); the preflight row `filters_static` lists the loops it drives, `filters` the
+elements it cannot (range, date, sort, per page, custom fields, other WordPress fields, templates, product, load-more,
+infinite-scroll and live-search loops, with the reason), `filters_over_cap` the loops too large. Measured: 500 items
+weigh 32 KB gzipped and are usable in under a second on a slow phone, 1,500 items 70 KB and 1.3 s; a host that does not
+compress pages pays the raw size (7 s and 14 s). Never say "every filter" or "any filter": name the kinds. Without
+JavaScript the page shows every item and the filters do nothing.
 
 ## Redirects
 
