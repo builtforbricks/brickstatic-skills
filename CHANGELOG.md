@@ -4,6 +4,13 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.6.1, 2026-11-02
+
+Verified up to Brickstatic 1.5.1. It goes out with Brickstatic 1.5.1.
+
+- `brst-static-export`: Query filters: a loop at -1 is one page of every item; filters work with Bricks' Element ID &
+  class set to as needed (the data attributes the script uses); what 1.5.0 did in both cases.
+
 ## 0.6.0, 2026-11-01
 
 Verified up to Brickstatic 1.5.0. It goes out with Brickstatic 1.5.0.

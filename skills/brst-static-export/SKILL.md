@@ -172,7 +172,10 @@ elements it cannot (range, date, sort, per page, custom fields, other WordPress 
 infinite-scroll and live-search loops, with the reason), `filters_over_cap` the loops too large. Measured: 500 items
 weigh 32 KB gzipped and are usable in under a second on a slow phone, 1,500 items 70 KB and 1.3 s; a host that does not
 compress pages pays the raw size (7 s and 14 s). Never say "every filter" or "any filter": name the kinds. Without
-JavaScript the page shows every item and the filters do nothing.
+JavaScript the page shows every item and the filters do nothing. Since 1.5.1 a loop at `posts_per_page` -1 is one page
+of every item, and the filters work with Bricks' **Element ID & class** set to as needed (the script finds the filters,
+the pagination and the items by `data-brst-filter`, `data-brst-pager` and `data-brst-loop`, not by Bricks' ids); on
+1.5.0 both failed: a -1 loop took the site's posts per page, and filters without an id did nothing.
 
 ## Redirects
 
