@@ -4,6 +4,16 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.7.1, 2026-11-03
+
+Verified up to Brickstatic 1.6.1. It goes out with Brickstatic 1.6.1.
+
+- `brst-forms-routes`: the WordPress address for forms is an install's address and refuses a form's own address; a form
+  whose action is the site's REST API keeps it on the static site and gets its answer there (measured with WS Form Lite);
+  what to say and what never to say about other form plugins.
+- `brst-preflight-findings`: `forms_unhandled` and the 1.6.1 REST case.
+- `brst-static-export`: the check's findings as log lines, and form actions that stay absolute.
+
 ## 0.7.0, 2026-11-03
 
 Verified up to Brickstatic 1.6.0. It goes out with Brickstatic 1.6.0.

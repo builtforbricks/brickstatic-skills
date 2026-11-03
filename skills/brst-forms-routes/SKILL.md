@@ -33,7 +33,10 @@ the live site: its actions (email, webhook, newsletter, create post, redirect), 
 
 - **Needs** WordPress online and publicly reachable at `/wp-admin/admin-ajax.php`, at the **WordPress address for
   forms** (Settings, Address and forms, `brst_static_export.forms_origin_url`; this site by default; another address when the
-  export is made from a staging copy). No password, access rule, redirect or IP allowlist on that address.
+  export is made from a staging copy). No password, access rule, redirect or IP allowlist on that address. It is an
+  install's address, never a form's own address: since 1.6.1 the screen refuses one with a REST path, `wp-admin`,
+  `wp-content`, `wp-includes`, a `.php` file, a query or a fragment (a submit address pasted there sent Bricks forms
+  to `<that address>/wp-admin/admin-ajax.php`), and a value stored before is ignored for the admin-ajax address.
 - **Needs** the static site's origin, so WordPress accepts the post: the **Base URL**'s origin counts on its own;
   other addresses go in **More addresses the forms accept** (static origins, `brst_static_export.static_origins`), one per line, exact origins such as
   `https://www.example.com` or one wildcard level such as `https://*.preview.example` for preview deploys. Only the two
@@ -80,7 +83,14 @@ WordPress site's REST addresses (`/wp-json/bfbe/v1/...`), which stay absolute in
 
 Any other form element, and a form added with a shortcode (in a Bricks Shortcode element or, since 1.2.5, in a page's
 ordinary content), is not connected: the preflight lists it as `forms_unhandled`. Measured with a form plugin's own form
-sent from a static copy: the entry reaches WordPress, but the visitor sees no confirmation and may send it again. To
+sent from a static copy: the entry reaches WordPress, but the visitor sees no confirmation and may send it again. Since
+1.6.1 one kind works: a form whose `action` is the site's REST API (the `rest_url()` path or a `rest_route=` query) or a
+`.php` file keeps that address on the static site, and a POST to the REST API from a configured static origin gets
+`Access-Control-Allow-Origin` for that origin (never credentials) before the route runs, so a plugin that posts to its
+own REST address, with no login and no nonce, and shows its reply from the answer, works (measured with WS Form Lite
+1.12.17: a contact form stored in WordPress and thanked on the static page). Say only that; never that every form
+plugin works or that Brickstatic connects one; the preflight still lists such a form; its uploads, payments and steps
+are untested. To
 feed a CRM from the static site, use Bricks' Form element with a Webhook action to the CRM's incoming webhook (measured). The fix is to rebuild it with Bricks' Form element or BFB Advanced Forms, or to exclude the page.
 
 ## Check forms

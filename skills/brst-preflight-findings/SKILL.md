@@ -179,7 +179,8 @@ the fix names.
   shortcode element with such a tag, and (since 1.2.5) such a shortcode or block in the ordinary content of a page or
   post that shows its content (no Bricks layout, or one set to render with WordPress); a vendor embed named that way
   works if it sends to its own service. Measured with a form plugin's own form: the entry reaches WordPress, but the
-  visitor sees no confirmation. Fix: Rebuild it
+  visitor sees no confirmation. Since 1.6.1 a form that posts to the site's own REST address with no login gets its
+  answer on the static page (measured with WS Form Lite; `brst-forms-routes`); the row still lists it. Fix: Rebuild it
   with Bricks' Form element or BFB Advanced Forms, which Brickstatic connects, or exclude these pages. A form that sends
   to its own service needs nothing.
 - **`forms_reachability`** as a warning (Forms origin reachability): "admin-ajax.php at <address> answered <status>
