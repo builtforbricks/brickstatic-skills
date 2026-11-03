@@ -60,11 +60,13 @@ GitHub and the address of the static site; **3. Export**, the run, its progress 
    site never calls Google.
 7. **Verify** (in steps of about four seconds) checks the tree: every internal link exists, every referenced file resolves, no reference to the
    WordPress site is left, every page carried the export header. Failures are listed, never rounded away: since 1.6.1
-   each finding is a line of the log (`missing file: <ref> (in <file>)`, `missing link: <href> (on <page>, ...)`,
+   each finding is a line of the log (`missing file: <ref> (used by <file>)`, `(in <file>)` on 1.6.1, `missing link: <href> (on <page>, ...)`,
    `reference to this site left: <url> (in <file>)`, up to 50, then how many more) above "Export finished with
    findings", in the run log and from `wp brickstatic export`; on 1.6.0 and before only the counts showed, and the lists
-   were in the run's `run.json` under `verify`. A form's action on the REST API or a `.php` file stays absolute on
-   purpose (1.6.1) and is not counted as left over.
+   were in the run's `run.json` under `verify`. On 1.6.1 and before, a `missing file` whose name is script code
+   (`url, document.baseURI`, `window.location.href`) is a false finding: the check read a page's inline script
+   (`new URL(...)`) as CSS; the export is whole, and 1.6.2 reads `url()` outside scripts only.
+   A form's action on the REST API or a `.php` file stays absolute on purpose (1.6.1) and is not counted as left over.
 8. **The archive**, `site.zip`, is built in a fixed order with its sha256 recorded. For the GitHub target the push
    follows (`brst-github-deploy`), for Your server the upload (`brst-server-deploy`).
 

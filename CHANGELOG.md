@@ -4,6 +4,13 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.7.2, 2026-11-03
+
+Verified up to Brickstatic 1.6.2. It goes out with Brickstatic 1.6.2.
+
+- `brst-static-export`: a missing file line says `(used by <file>)`; on 1.6.1 and before, a missing file named like
+  script code (`url, document.baseURI`) is a false finding from a page's inline script, and the export is whole.
+
 ## 0.7.1, 2026-11-03
 
 Verified up to Brickstatic 1.6.1. It goes out with Brickstatic 1.6.1.
