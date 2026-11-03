@@ -175,7 +175,13 @@ compress pages pays the raw size (7 s and 14 s). Never say "every filter" or "an
 JavaScript the page shows every item and the filters do nothing. Since 1.5.1 a loop at `posts_per_page` -1 is one page
 of every item, and the filters work with Bricks' **Element ID & class** set to as needed (the script finds the filters,
 the pagination and the items by `data-brst-filter`, `data-brst-pager` and `data-brst-loop`, not by Bricks' ids); on
-1.5.0 both failed: a -1 loop took the site's posts per page, and filters without an id did nothing.
+1.5.0 both failed: a -1 loop took the site's posts per page, and filters without an id did nothing. Since 1.6.0 the
+items come from the loop's own query, so a custom element that runs Bricks' Query Loop (`hasLoop` + `query`) but prints
+no item per post (a calendar, a map, a chart drawn in the browser) is filtered too, and the static page sends the
+document event `brickstatic/filters/result` once ready and after every change (`queryId`, `postIds`, `pagePostIds`,
+`page`, `pages`, `total`; the last one in `window.brstFilters.results[queryId]`) for the element's script to redraw
+from. Say it only for elements that run Bricks' own query; never name a third-party element pack as working (none is
+tested; the lab's own element is), and the event does not exist on the live site.
 
 ## Redirects
 

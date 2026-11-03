@@ -4,6 +4,14 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.7.0, 2026-11-03
+
+Verified up to Brickstatic 1.6.0. It goes out with Brickstatic 1.6.0.
+
+- `brst-static-export`: Query filters: the items come from the loop's own query, so an element that runs Bricks' Query
+  Loop but prints no item per post is filtered too; the document event `brickstatic/filters/result` and its fields;
+  what to say and what never to say about custom elements.
+
 ## 0.6.1, 2026-11-02
 
 Verified up to Brickstatic 1.5.1. It goes out with Brickstatic 1.5.1.
