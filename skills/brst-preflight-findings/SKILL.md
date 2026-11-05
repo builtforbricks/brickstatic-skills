@@ -161,6 +161,10 @@ the fix names.
 - **`forms_no_origin`** (No static origin for forms). "<n> forms post to this WordPress site, but no static origin is
   set, so browsers on the static site cannot read the answers and the forms show an error." Fix: Enter the static
   site's origin under Settings, Address and forms (the base URL or a static origin), or set the forms to send to a service.
+- **`forms_token`** (Forms with token spam protection). Since 1.7.0, a connected form plugin with its token spam protection
+  on. "The form plugin's token spam protection asks WordPress for a token with a code that expires within a day, so these
+  forms are refused on the static site." Fix: Switch the token protection off in the form plugin's settings; a captcha or
+  its honeypot still works.
 - **`forms_advanced_cart`** (WooCommerce cart in a form). "These forms add a product to the WooCommerce cart. On the
   static site the button cannot: the cart lives in a cookie on this WordPress site, which a static page does not send."
   Fix: Switch off the WooCommerce cart in the Total element, or link to the product page on your shop instead, or
@@ -175,7 +179,8 @@ the fix names.
   Success and Cancel addresses in full, on the static site (https://...), or leave them empty to come back to the page.
 - **`forms_unhandled`** (Forms Brickstatic does not handle). "These elements and pages show a form that Brickstatic does
   not connect. Unless the form sends to a service of its own, sending it from the static site fails or does nothing."
-  Any element other than Bricks' Form and a BFB Advanced Form whose name has a word ending in "form" or "forms", a
+  Any element other than Bricks' Form and a BFB Advanced Form whose name has a word ending in "form" or "forms" (since
+  1.7.0, a connected plugin's shortcode and block are forms to this WordPress site instead), a
   shortcode element with such a tag, and (since 1.2.5) such a shortcode or block in the ordinary content of a page or
   post that shows its content (no Bricks layout, or one set to render with WordPress); a vendor embed named that way
   works if it sends to its own service. Measured with a form plugin's own form: the entry reaches WordPress, but the

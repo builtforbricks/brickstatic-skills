@@ -89,9 +89,16 @@ sent from a static copy: the entry reaches WordPress, but the visitor sees no co
 `Access-Control-Allow-Origin` for that origin (never credentials) before the route runs, so a plugin that posts to its
 own REST address, with no login and no nonce, and shows its reply from the answer, works (measured with WS Form Lite
 1.12.17: a contact form stored in WordPress and thanked on the static page). Say only that; never that every form
-plugin works or that Brickstatic connects one; the preflight still lists such a form; its uploads, payments and steps
-are untested. To
-feed a CRM from the static site, use Bricks' Form element with a Webhook action to the CRM's incoming webhook (measured). The fix is to rebuild it with Bricks' Form element or BFB Advanced Forms, or to exclude the page.
+plugin works; the preflight still lists such a form; its uploads, payments and steps are untested.
+
+Since 1.7.0 Fluent Forms is connected, the one form plugin that is: its form always sends to this WordPress site, with
+nothing to set in the form, and the preflight counts it with the forms to this WordPress site, from a shortcode, a page's
+content or its block. WordPress must stay online and the static origin must be set, as for Bricks' forms. Measured with
+the free Fluent Forms 6.2.17: stored in Fluent Forms, its message or its thank-you page on the static site. Its token spam
+protection must be off (`forms_token`, the form is refused otherwise). When WordPress does not answer the form shows no
+error. Captchas and Pro's uploads and payments are untested.
+
+To feed a CRM from the static site, use Bricks' Form element with a Webhook action to the CRM's incoming webhook (measured). The fix is to rebuild it with Bricks' Form element or BFB Advanced Forms, or to exclude the page.
 
 ## Check forms
 

@@ -4,6 +4,13 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.8.0, 2026-11-05
+
+Verified up to Brickstatic 1.7.0. It goes out with Brickstatic 1.7.0.
+
+- `brst-forms-routes`: Fluent Forms is connected: it always sends to this WordPress site, what was measured and what is not.
+- `brst-preflight-findings`: the row `forms_token`, and a connected plugin's forms are not `forms_unhandled`.
+
 ## 0.7.2, 2026-11-03
 
 Verified up to Brickstatic 1.6.2. It goes out with Brickstatic 1.6.2.
