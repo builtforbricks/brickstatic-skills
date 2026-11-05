@@ -8,9 +8,11 @@ plugin that has not shipped.
 
 Verified up to Brickstatic 1.8.0. It goes out with Brickstatic 1.8.0.
 
-- `brst-static-export`, `brst-start-here`: JetSmartFilters work through WordPress, what was measured and what is not.
+- `brst-static-export`, `brst-start-here`: JetSmartFilters and JetEngine's load more, calendars and maps work through WordPress,
+  what was measured and what is not.
 - `brst-preflight-findings`: the rows `filters_connected`, `filters_no_origin`, `filters_reload`, `filters_mixed`,
-  `filters_provider`, `listing_load_more`, `listing_lazy`; `forms_reachability` is labelled WordPress reachability and covers filters.
+  `filters_provider`, `filters_untested`, `listing_asking`, `listing_lazy`; `forms_reachability` is labelled WordPress
+  reachability and covers all of these.
 
 ## 0.8.0, 2026-11-05
 

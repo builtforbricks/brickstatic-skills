@@ -93,7 +93,7 @@ templates, product and reveal loops, loops over 1,000 items), and anything that 
 the page. Load more and infinite scroll pre-render up to 100 items per loop. Forms to this WordPress site need WordPress
 online. Since 1.5.0 checkbox, radio, select and search filters on a page's post loop work on the static copy from the
 items on the page (`brst-static-export`, Query filters); name the kinds, never "every filter". Since 1.8.0 JetSmartFilters
-work too, but only while WordPress stays online: every filter change asks it.
+and JetEngine's load more, calendar months and map popups work too, but only while WordPress stays online: every use asks it.
 Site search works for the Bricks Search element and, since 1.3.1, for another plugin's search element that plugin names
 with `brickstatic/search/elements`. Since 1.4.0 a search form that is not an element (a WordPress widget, a shortcode,
 the theme's) works once the owner names it with a CSS selector under **Other search forms**; without one, only a form

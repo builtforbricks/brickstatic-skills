@@ -192,13 +192,19 @@ tested; the lab's own element is), and the event does not exist on the live site
 
 Since 1.8.0 JetSmartFilters work on the static site too, a different way: they keep asking WordPress, as forms that send to
 this WordPress site do, so WordPress has to stay online and reachable from the visitor's browser, and every change of a
-filter is a request to it. The static site's origin must be set under Settings, Address and forms. Measured with
-JetSmartFilters 3.8.6.3 and JetEngine 3.9.0.2, Apply type AJAX, on a Bricks Query Loop marked Is filterable and on a Listing
-Grid: checkboxes, select with levels, range, date range, search, the plugin's pagination, several filters together and the
-counts give the same list as on WordPress, links on the static site, images from WordPress. Page reload does not work; Mixed
-filters but its address opens the full list; a Listing Grid's load more does nothing; a lazy Listing Grid is rendered into the
-page. Not tested: radio, sorting, rating and alphabet filters, other content sources, JetEngine's Query Builder. Bricks' own
-filters stay the way to filter with no WordPress: never blur the two, and never say these filters work with WordPress offline.
+filter is a request to it. A Listing Grid's load more, a calendar's month arrows and a map's popups ask it the same way. The
+static site's origin must be set under Settings, Address and forms. Measured with JetSmartFilters 3.8.6.3 and JetEngine
+3.9.0.2, Apply type AJAX: checkboxes, select with levels, radio, range, check range, rating, visual, date range, date period,
+alphabet, search, sorting, hidden, the apply button, active filters and tags, remove filters, the plugin's pagination and the
+counts give the same list as on WordPress, links on the static site, images from WordPress. Sources measured: every one Bricks
+offers a filter: a Bricks Query Loop marked Is filterable (posts, terms, users), a Listing Grid, a calendar, a multiday
+calendar, a map and a JSF Listing. JetEngine's Query Builder is measured in a grid and a loop with posts, terms, users, SQL and
+a Custom Content Type; a repeater query's items export into the page, a filter on one is not measured. Load more and infinite scroll add the next items, also after a filter; a
+calendar's month arrows and a multiday event's pop-up work; a map's popups work with the Leaflet provider. A calendar keeps its
+filter when the month changes, where WordPress itself drops it. Page reload does not work; Mixed filters but its address opens
+the full list; a lazy Listing Grid is rendered into the page. Not tested: the map filters (location and distance, map sync, user
+geolocation), Google Maps and Mapbox, Data Stores, the Query Builder's comments, merged, file and current WordPress query
+types, and a calendar on an archive whose query reads that archive. Bricks' own filters stay the way to filter with no WordPress: never blur the two, and never say these filters work with WordPress offline.
 
 ## Redirects
 
