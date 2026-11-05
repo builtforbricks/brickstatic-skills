@@ -190,6 +190,16 @@ document event `brickstatic/filters/result` once ready and after every change (`
 from. Say it only for elements that run Bricks' own query; never name a third-party element pack as working (none is
 tested; the lab's own element is), and the event does not exist on the live site.
 
+Since 1.8.0 JetSmartFilters work on the static site too, a different way: they keep asking WordPress, as forms that send to
+this WordPress site do, so WordPress has to stay online and reachable from the visitor's browser, and every change of a
+filter is a request to it. The static site's origin must be set under Settings, Address and forms. Measured with
+JetSmartFilters 3.8.6.3 and JetEngine 3.9.0.2, Apply type AJAX, on a Bricks Query Loop marked Is filterable and on a Listing
+Grid: checkboxes, select with levels, range, date range, search, the plugin's pagination, several filters together and the
+counts give the same list as on WordPress, links on the static site, images from WordPress. Page reload does not work; Mixed
+filters but its address opens the full list; a Listing Grid's load more does nothing; a lazy Listing Grid is rendered into the
+page. Not tested: radio, sorting, rating and alphabet filters, other content sources, JetEngine's Query Builder. Bricks' own
+filters stay the way to filter with no WordPress: never blur the two, and never say these filters work with WordPress offline.
+
 ## Redirects
 
 Redirection (enabled URL redirects), Rank Math (active; exact, starts with, a regex that is a plain prefix), Yoast

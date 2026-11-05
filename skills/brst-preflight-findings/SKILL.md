@@ -86,6 +86,16 @@ the fix names.
   with more items than one page can carry. Fix: use checkbox, radio, select or search filters on a taxonomy, the post
   type or the author, on a page or post of its own; or remove the filter elements; or keep them and accept the
   unfiltered loop.
+- **`filters_no_origin`** (No static origin for filters, since 1.8.0). A warning: JetSmartFilters ask this WordPress site, and
+  with no static origin browsers cannot read the answer. Fix: Enter the static site's origin under Settings, Address and forms.
+- **`filters_reload`** (Filters set to Page reload, since 1.8.0). A warning: a static page always shows the full list. Fix: Set
+  Apply type to AJAX on the filter in Bricks.
+- **`filters_mixed`** (Filters set to Mixed, since 1.8.0). A warning: the filters work, but the address they write opens the full
+  list. Fix: Set Apply type to AJAX, or accept this.
+- **`filters_provider`** (Filters on another content source, since 1.8.0). A warning: only a Bricks Query Loop and a Listing Grid
+  are tested. Fix: Try them on the static site before relying on them.
+- **`listing_load_more`** (Listing Grids with load more, since 1.8.0). A warning: load more asks the page itself and a static host
+  refuses that. Fix: Use JetSmartFilters pagination set to AJAX, or show every item in the grid.
 - **`filters_over_cap`** (Query filters on a large loop, since 1.5.0). A warning: "A filtered loop with more than
   1000 items is exported unfiltered with plain pagination: one page cannot carry that many items." Fix: narrow the loop
   (a post type, a taxonomy, a date range), or split it over several pages with a loop each.
@@ -188,8 +198,8 @@ the fix names.
   answer on the static page (measured with WS Form Lite; `brst-forms-routes`); the row still lists it. Fix: Rebuild it
   with Bricks' Form element or BFB Advanced Forms, which Brickstatic connects, or exclude these pages. A form that sends
   to its own service needs nothing.
-- **`forms_reachability`** as a warning (Forms origin reachability): "admin-ajax.php at <address> answered <status>
-  instead of 400, so forms posting to this WordPress site may fail." Fix: Make /wp-admin/admin-ajax.php publicly
+- **`forms_reachability`** as a warning (WordPress reachability): "admin-ajax.php at <address> answered <status>
+  instead of 400, so forms and filters asking this WordPress site may fail." Fix: Make /wp-admin/admin-ajax.php publicly
   reachable at the WordPress address for forms (no password, access rule, redirect or IP allowlist on it), or correct
   that address under Settings, Address and forms.
 
@@ -252,6 +262,10 @@ the fix names.
   keys.
 - **`destination`** (Destination). No destination base URL is set, so sitemaps and canonical links keep this site's
   address. Fix: Enter the static site's address under Settings, Address and forms.
+
+- **`filters_connected`** (JetSmartFilters, since 1.8.0). A note: these filters ask WordPress on every change, so it has to stay
+  online and reachable. Fix: nothing; after the export, try each filter on the static site.
+- **`listing_lazy`** (Lazy Listing Grids, since 1.8.0). A note: the grids are rendered into the page at export. Fix: nothing.
 
 ## Reading a report
 
