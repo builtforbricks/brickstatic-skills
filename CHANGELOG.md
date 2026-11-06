@@ -4,6 +4,10 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.9.1, 2026-11-06
+
+Verified up to Brickstatic 1.8.1. It goes out with Brickstatic 1.8.1. No skill changed: 1.8.1 adds two read-only filters for other plugins.
+
 ## 0.9.0, 2026-11-05
 
 Verified up to Brickstatic 1.8.0. It goes out with Brickstatic 1.8.0.
