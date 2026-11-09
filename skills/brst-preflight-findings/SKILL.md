@@ -126,7 +126,15 @@ the fix names.
   (it belongs under Extra files); a missing file, a PHP or dot file, an empty folder; a file the export writes itself
   (robots.txt, favicon.ico, the home page, the 404 page); the whole site, wp-content or uploads folder (name a folder
   inside it); a folder closed to visitors (an `.htaccess` that denies access, or a `web.config`), skipped with what is
-  under it; the line where 5,000 files was reached. Fix: Correct or remove them under Settings, What goes in.
+  under it; the line where 5,000 files was reached. On a WordPress network (1.8.2): a page on another site of the
+  network ("export it from that site"), and an extra file outside the site's own uploads folder (on the main site, one
+  in the other sites' uploads). Fix: Correct or remove them under Settings, What goes in.
+- **`network_folder`** (A site in a folder of a network, 1.8.2). A warning on a site that lives in a folder of a
+  WordPress network (`/site2/`): the static copy keeps that folder in every address, so its home page is in the folder,
+  not at the root of the static site, and it has no robots.txt or favicon.ico of its own (WordPress serves those at the
+  network's root only). Fix: Enter the static site's address without the folder and publish the copy as it is, folder
+  included; to have the site at the root of its own address, give it its own domain under Network Admin, Sites, Edit
+  (Site Address), then export again.
 - **`sitemaps`** (Sitemaps). A note naming who serves the sitemap (an SEO plugin or WordPress): it goes in with the
   static site's address, entries for pages the export does not have taken out. A warning instead when no address of the
   static site is set: its links and robots.txt would point at WordPress. Fix: Set the address of the static site under
