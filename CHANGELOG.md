@@ -4,6 +4,11 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.9.3, 2026-11-12
+
+Verified up to Brickstatic 1.8.3. It goes out with Brickstatic 1.8.3. `brst-static-export`: a page that does not answer
+in three minutes is given up and named, a step gets five minutes, and a screen left open overnight renews its login check.
+
 ## 0.9.2, 2026-11-09
 
 Verified up to Brickstatic 1.8.2. It goes out with Brickstatic 1.8.2. `brst-preflight-findings`: the new

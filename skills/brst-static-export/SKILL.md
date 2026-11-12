@@ -258,7 +258,10 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
   itself. The tab must stay open (Pause and Cancel are on the panel). A host that blocks an address after many quick
   requests (1.2.2): five pages in a row refused or unanswered pause the export on its own with a sentence saying so, no
   page counted as failed; after Resume it fetches one page at a time with a gap. Already blocked: wait, set Parallel
-  requests to 1 under Settings, reload the screen and resume the run.
+  requests to 1 under Settings, reload the screen and resume the run. Since 1.8.3 a page WordPress has not answered after
+  three minutes is fetched twice more, then failed with "no answer in 180 s: the runner gave up on this page" (a slow
+  page: raise the host's limits or leave it out); a step on the server gets five minutes and is sent again. A screen left
+  open overnight renews its login check on its own; before 1.8.3 it said "Your login check has expired": reload the screen.
 - **Windows** (1.2.4): local Windows stacks copy files from disk like any other system. Before 1.2.4 every file was
   fetched in the browser there ("fetched here" on every line), files in subfolders could be missing from the export
   and the ZIP was not offered: update, then export again.
