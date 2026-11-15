@@ -55,8 +55,7 @@ After the archive is built:
 - A page the export no longer has is gone as soon as the export is published. An export in which pages failed, and a
   page update that does not hold the whole site, keep every other file of the last upload: nothing is removed then.
 - An address without its last slash is sent on to the one with it, an unknown address gets the export's `404.html`, and
-  the export's `_redirects` is applied by Cloudflare (a `_headers` file in the export's root too). Neither is published
-  as a file. Cloudflare takes 2,000 plain redirect rules and 100 with a wildcard; the run's log says when rules were
+  the export's `_redirects` is applied by Cloudflare and is not published as a file. Cloudflare takes 2,000 plain redirect rules and 100 with a wildcard; the run's log says when rules were
   left out.
 - A new Worker's workers.dev address is switched on once, after its first publish:
   `https://<worker name>.<account's name>.workers.dev/`. A Worker that existed keeps its switch as the owner set it.
