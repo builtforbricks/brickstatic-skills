@@ -4,6 +4,16 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.10.0, 2026-11-15
+
+Verified up to Brickstatic 1.9.0 (the Cloudflare target). It goes out with Brickstatic 1.9.0.
+
+- `brst-cloudflare-deploy` (new): the Cloudflare card, Test connection, a Worker that already exists, what a publish
+  sends and removes, the workers.dev address and a custom domain, limits, failures and the WP-CLI commands.
+- `brst-start-here`: `export-start` takes `target: cloudflare`; publishing to Cloudflare is in the never-do list.
+- `brst-static-export`: Cloudflare among the targets, the page-update choices and Where updates go.
+- `brst-server-deploy`: Where updates go lists Cloudflare.
+
 ## 0.9.3, 2026-11-12
 
 Verified up to Brickstatic 1.8.3. It goes out with Brickstatic 1.8.3. `brst-static-export`: a page that does not answer

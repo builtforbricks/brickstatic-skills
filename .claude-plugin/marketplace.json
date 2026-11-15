@@ -5,13 +5,13 @@
         "url": "https://builtforbricks.com"
     },
     "metadata": {
-        "description": "Agent skills for Brickstatic, the Bricks Builder plugin by Built for Bricks: the preflight, an export, forms on a static site, GitHub and your own server.",
-        "version": "0.9.3"
+        "description": "Agent skills for Brickstatic, the Bricks Builder plugin by Built for Bricks: the preflight, an export, forms on a static site, GitHub, your own server and Cloudflare.",
+        "version": "0.10.0"
     },
     "plugins": [
         {
             "name": "brickstatic",
-            "description": "Brickstatic skills for Bricks MCP clients: start-here, how an export works, every preflight finding, form routes, the GitHub and server targets and the update check.",
+            "description": "Brickstatic skills for Bricks MCP clients: start-here, how an export works, every preflight finding, form routes, the GitHub, server and Cloudflare targets and the update check.",
             "source": "./",
             "strict": false,
             "skills": [
@@ -21,6 +21,7 @@
                 "./skills/brst-forms-routes",
                 "./skills/brst-github-deploy",
                 "./skills/brst-server-deploy",
+                "./skills/brst-cloudflare-deploy",
                 "./skills/brst-update"
             ]
         }

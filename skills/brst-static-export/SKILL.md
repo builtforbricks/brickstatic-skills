@@ -1,6 +1,6 @@
 ---
 name: brst-static-export
-description: "Use when exporting a Bricks site as static HTML with Brickstatic, or explaining what an export does: export mode, which URLs are exported or left out, the export options and the destination, the ZIP, GitHub and Your server targets, runs and retention, what the ZIP holds, site search, redirects, sitemaps, extra pages and files, updating a page from Bricks, and the WP-CLI commands."
+description: "Use when exporting a Bricks site as static HTML with Brickstatic, or explaining what an export does: export mode, which URLs are exported or left out, the export options and the destination, the ZIP, GitHub, Your server and Cloudflare targets, runs and retention, what the ZIP holds, site search, redirects, sitemaps, extra pages and files, updating a page from Bricks, and the WP-CLI commands."
 ---
 
 # Brickstatic: how an export works
@@ -68,7 +68,8 @@ GitHub and the address of the static site; **3. Export**, the run, its progress 
    (`new URL(...)`) as CSS; the export is whole, and 1.6.2 reads `url()` outside scripts only.
    A form's action on the REST API or a `.php` file stays absolute on purpose (1.6.1) and is not counted as left over.
 8. **The archive**, `site.zip`, is built in a fixed order with its sha256 recorded. For the GitHub target the push
-   follows (`brst-github-deploy`), for Your server the upload (`brst-server-deploy`).
+   follows (`brst-github-deploy`), for Your server the upload (`brst-server-deploy`), for Cloudflare the publish
+   (`brst-cloudflare-deploy`).
 
 ## What export mode changes in a page
 
@@ -126,6 +127,9 @@ A page's own **Page settings → Brickstatic** in Bricks: **Leave this page out 
 - **Your server (SFTP or FTP)** (1.3.0): available once the Your server card is complete (for SFTP, the server's key
   accepted); until then step 2 shows it disabled with its reason and a Set up your server link. Only new and changed
   files go up. See `brst-server-deploy`.
+- **Cloudflare** (1.9.0): available once an account ID, a Worker name and an API token are saved under Settings,
+  Cloudflare; until then step 2 shows it disabled with its reason and a Set up Cloudflare link. Only new and changed
+  files are sent, straight to the owner's Cloudflare account. See `brst-cloudflare-deploy`.
 
 ## Runs and retention
 
@@ -239,7 +243,8 @@ Re-exports one page and the files it uses, into a copy of the last complete expo
   (and `changed_only`); `wp brickstatic export --only=<url> [--changed-only]`.
 
 Where it goes, GitHub first: **GitHub: commit the changed files** (picked once GitHub is set up), **Your server: upload
-the changed files** (1.3.0; picked when the server is set up and GitHub is not; removes nothing), **ZIP: changed files
+the changed files** (1.3.0; picked when the server is set up and GitHub is not; removes nothing), **Cloudflare: upload
+the changed files** (1.9.0), **ZIP: changed files
 only** (just what the update changed, to unzip over the live copy; when nothing changed there is no ZIP and the screen
 says so), **ZIP: whole site** (the last export with the page replaced). The search index and `_redirects` are rebuilt
 from the whole tree, and the sitemaps are fetched from WordPress again and taken down to the pages of the whole tree,
@@ -265,7 +270,7 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
 - **Windows** (1.2.4): local Windows stacks copy files from disk like any other system. Before 1.2.4 every file was
   fetched in the browser there ("fetched here" on every line), files in subfolders could be missing from the export
   and the ZIP was not offered: update, then export again.
-- **WP-CLI**, server-side: `wp brickstatic export [--target=zip|github|server] [--parallel=<n>] [--only=<url>]
+- **WP-CLI**, server-side: `wp brickstatic export [--target=zip|github|server|cloudflare] [--parallel=<n>] [--only=<url>]
   [--changed-only] [--base-url=<url>] [--skip-fonts] [--force] [--format=table|json]`. A CLI process is not a PHP worker, so it suits
   large sites. `--parallel` is 1 to 6, default 1; only a host with free PHP workers gains from more: above 1 the
   worker probe runs first and the number is capped at the free workers it saw (a line says so).
@@ -278,8 +283,8 @@ file: the run's warnings name what to delete on the host by hand (removed pages 
 again on its own: **When content changes** (a page, post or other exported post type, a Bricks template or a menu
 published, updated, unpublished or deleted; Bricks' site-wide settings saved; the builder's Save counts; drafts,
 autosaves and revisions never do) and **On a schedule** (every day or every week at a time on the site's clock).
-Where it goes (1.3.0, **Where updates go**): GitHub, Your server or a ZIP kept in History; GitHub and the server receive
-only the changed files (an unchanged site sends nothing). Without a choice, GitHub when it is set up, else a ZIP; a choice
+Where it goes (1.3.0, **Where updates go**): GitHub, Your server, Cloudflare (1.9.0) or a ZIP kept in History; GitHub,
+the server and Cloudflare receive only the changed files (an unchanged site sends nothing). Without a choice, GitHub when it is set up, else a ZIP; a choice
 that is not set up falls back to a ZIP.
 
 - An update starts right after the change; changes made while one runs give one more update when it ends.
@@ -314,6 +319,7 @@ that is not set up falls back to a ZIP.
 | `wp brickstatic auto set [--on-change=on\|off] [--schedule=off\|daily\|weekly] [--time=HH:MM] [--day=0-6]` | the same as the card; only on the owner's word |
 | `wp brickstatic auto run` | an automatic update now, in this process, waiting for it; only on the owner's word |
 
-The GitHub and release commands are in `brst-github-deploy`, the server commands in `brst-server-deploy`. Ask the owner before deleting a
+The GitHub and release commands are in `brst-github-deploy`, the server commands in `brst-server-deploy`, the Cloudflare
+commands in `brst-cloudflare-deploy`. Ask the owner before deleting a
 run, issuing a token or changing automatic updates: an export token switches export mode on for any request that
-carries it until it expires, and an automatic update to GitHub or your server is a push or an upload.
+carries it until it expires, and an automatic update to GitHub, your server or Cloudflare is a push or an upload.

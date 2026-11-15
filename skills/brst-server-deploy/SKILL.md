@@ -90,7 +90,7 @@ were saved on, and the target says so until they are saved again on the copy.
 
 ## Automatic updates
 
-**Settings > Automatic updates > Where updates go**: GitHub, Your server or A ZIP in History (`target`). An update to the
+**Settings > Automatic updates > Where updates go**: GitHub, Your server, Cloudflare (1.9.0) or A ZIP in History (`target`). An update to the
 server sends only the changed files. Until the owner changes the select, `target` stays empty and the default rule applies
 (GitHub once set up, else a ZIP). A choice that is not set up falls back to a ZIP, and the card says so.
 

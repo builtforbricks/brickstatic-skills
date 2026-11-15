@@ -5,7 +5,7 @@ publishes a Bricks site as static HTML that keeps its forms working, as a ZIP or
 client how an export works, what every preflight finding means and how to fix it, how forms reach a destination from a
 static page, and what a push to GitHub does and never does. Checked against the plugin before every release.
 
-**Status: released with Brickstatic 1.8.3 (pack 0.9.3).** Each release names the Brickstatic version it was checked
+**Status: released with Brickstatic 1.9.0 (pack 0.10.0).** Each release names the Brickstatic version it was checked
 against (`verifiedUpTo` in `skills/brst-update/references/index.json`) and goes out with that plugin version.
 
 ## What a skill is
@@ -64,12 +64,13 @@ Then start a new chat and ask: *List the loaded skills whose names start with `b
 | `brst-forms-routes` | The per-form choice (This WordPress site or Another service), the form's Brickstatic group, static origins, Check forms, what each route needs and cannot do |
 | `brst-github-deploy` | The GitHub card, the token's scope, the folder, releases and roll back, a page re-export, what the push never does |
 | `brst-server-deploy` | The Your server card (SFTP, FTPS, FTP), accepting the server's key, a folder with files, what an upload sends and removes |
+| `brst-cloudflare-deploy` | The Cloudflare card, the API token's permission, a Worker that already exists, what a publish sends and removes, the address and a custom domain |
 | `brst-update` | Compares the pack with the plugin on the site; updates on request |
 
 ## What these skills never do
 
 They never switch the abilities on for the owner, never touch the licence, and never push to GitHub, upload to the
-owner's server, roll back a release or change the GitHub or server settings without the owner's word for that action. They never read, store or ask for the
+owner's server, publish to Cloudflare, roll back a release or change the GitHub, server or Cloudflare settings without the owner's word for that action. They never read, store or ask for the
 GitHub token in a chat: the owner pastes it under Settings, GitHub on the Brickstatic screen or pipes it to WP-CLI. They never present a static copy
 as tested: the owner checks the static site, and its forms, from the address it is served at.
 
