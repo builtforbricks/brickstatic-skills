@@ -37,8 +37,7 @@ nothing is uploaded or deployed), and looks for the Worker:
 
 - "No Worker named ... exists yet: the first export creates it." When the account has no workers.dev address yet, the
   test says so: the owner opens Workers & Pages in Cloudflare's dashboard once to get one, or attaches a domain later.
-- "The Worker ... holds the last export.", with the addresses it answers at (its custom domains and its workers.dev
-  address).
+- "The Worker ... holds the last export.", with where the site is (its custom domains and its workers.dev address).
 - "A Worker named ... already exists, and Brickstatic did not make it." An export then stops with the same sentence
   until the owner clicks **Use this Worker for the static site** (or `--confirm-worker`), or chooses another name.
 - "Cloudflare refused the API token": the token is wrong, expired or revoked. "Cloudflare refused: the API token cannot
@@ -52,7 +51,7 @@ After the archive is built:
 - Every publish names the whole site's files to Cloudflare, which answers the ones it lacks; only those are uploaded.
   The new list replaces the old one in one step. An unchanged site sends nothing and makes no deployment ("Nothing
   changed since the last upload to Cloudflare, Worker ...").
-- A page the export no longer has is gone as soon as the export is published. An export in which pages failed, and a
+- A page the export no longer has is gone within seconds of the export being published. An export in which pages failed, and a
   page update that does not hold the whole site, keep every other file of the last upload: nothing is removed then.
 - An address without its last slash is sent on to the one with it, an unknown address gets the export's `404.html`, and
   the export's `_redirects` is applied by Cloudflare and is not published as a file. Cloudflare takes 2,000 plain redirect rules and 100 with a wildcard; the run's log says when rules were
