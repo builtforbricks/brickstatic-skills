@@ -4,6 +4,12 @@ Each release of this pack names the Brickstatic version it was checked against (
 `skills/brst-update/references/index.json`). Skills and plugin are released together; a pack never describes a
 plugin that has not shipped.
 
+## 0.10.1, 2026-11-22
+
+Verified up to Brickstatic 1.9.1. It goes out with Brickstatic 1.9.1. `brst-static-export`: SEOPress's sitemap is taken
+from SEOPress itself, so it goes in even when `robots.txt` does not name it; before 1.9.1 such a site showed
+`/wp-sitemap.xml` in Check the site and exported no sitemap.
+
 ## 0.10.0, 2026-11-15
 
 Verified up to Brickstatic 1.9.0 (the Cloudflare target). It goes out with Brickstatic 1.9.0.

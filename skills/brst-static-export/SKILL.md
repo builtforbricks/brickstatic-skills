@@ -225,7 +225,10 @@ never replaces a page or a file of the export. On GitHub the export's lines are 
 ## Sitemaps
 
 The sitemaps `robots.txt` announces go in with the base URL; an entry whose page the export does not have is taken out,
-and a child sitemap left empty leaves the index. A leaked export token exposes only what a visitor
+and a child sitemap left empty leaves the index. SEOPress is asked directly (1.9.1): with its XML sitemap on, its index
+`sitemaps.xml` goes in even when `robots.txt` does not name it (SEOPress PRO's robots.txt editor replaces SEOPress's own
+line), and WordPress' `wp-sitemap.xml` never stands in for it. Before 1.9.1 such a site showed `/wp-sitemap.xml` in
+Check the site and exported no sitemap: update the plugin. A leaked export token exposes only what a visitor
 could already see.
 
 Every page carries one small script (`brst-disk-links`): only when the page is opened as a file, a click on a folder
